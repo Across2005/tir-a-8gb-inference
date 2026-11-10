@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+<rect width="1000" height="500" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5b6572"/></marker></defs>
+<text x="300" y="82" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="start" font-weight="bold" fill="#1f2328">平均功耗（W）</text>
+<text x="286" y="143.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1f2328">4B qwen（C3）</text>
+<rect x="300" y="126.0" width="341.20000000000005" height="24" rx="3" fill="#d9822b" stroke="none"/>
+<text x="649.2" y="143.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1f2328">85.3 W</text>
+<text x="900" y="143.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#b03a2e">69 °C</text>
+<text x="286" y="199.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1f2328">8B DSR1（C3）</text>
+<rect x="300" y="182.0" width="383.12" height="24" rx="3" fill="#d9822b" stroke="none"/>
+<text x="691.12" y="199.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1f2328">95.78 W</text>
+<text x="900" y="199.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#b03a2e">74 °C</text>
+<text x="286" y="255.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1f2328">9B MTP（tir-bench）</text>
+<rect x="300" y="238.0" width="392.9599999999999" height="24" rx="3" fill="#d9822b" stroke="none"/>
+<text x="700.9599999999999" y="255.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1f2328">98.24 W</text>
+<text x="900" y="255.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#b03a2e">64 °C</text>
+<text x="286" y="311.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1f2328">9B（llama-bench）</text>
+<rect x="300" y="294.0" width="418.6" height="24" rx="3" fill="#d9822b" stroke="none"/>
+<text x="726.6" y="311.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1f2328">104.65 W</text>
+<text x="900" y="311.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#b03a2e">74 °C</text>
+<text x="286" y="367.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1f2328">空闲（09:55 后）</text>
+<rect x="300" y="350.0" width="74.4" height="24" rx="3" fill="#aeb6bf" stroke="none"/>
+<text x="382.4" y="367.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1f2328">18.6 W</text>
+<text x="900" y="367.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#b03a2e">50 °C</text>
+<line x1="760.0" y1="98" x2="760.0" y2="398" stroke="#b03a2e" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="752.0" y="92" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#b03a2e">上限 115 W</text>
+<text x="40" y="460" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">数据：test/power/results.jsonl（4B/8B，decode 口径）；hardware-ceiling-probe.md §2.5（llama-bench、tir-bench）；build/logs/tp1-gpu-load-2026-11-10.txt（空闲）。</text>
+<text x="40" y="480" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">温度是同场景采样峰值/观测值，不能当作长期热稳态。</text>
+</svg>

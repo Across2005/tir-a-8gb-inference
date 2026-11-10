@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<rect width="1000" height="520" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5b6572"/></marker></defs>
+<line x1="300.0" y1="92" x2="300.0" y2="426" stroke="#d7dce2" stroke-width="1"/>
+<text x="300.0" y="446" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">0</text>
+<line x1="445.0" y1="92" x2="445.0" y2="426" stroke="#d7dce2" stroke-width="1"/>
+<text x="445.0" y="446" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">100</text>
+<line x1="590.0" y1="92" x2="590.0" y2="426" stroke="#d7dce2" stroke-width="1"/>
+<text x="590.0" y="446" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">200</text>
+<line x1="735.0" y1="92" x2="735.0" y2="426" stroke="#d7dce2" stroke-width="1"/>
+<text x="735.0" y="446" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">300</text>
+<line x1="880.0" y1="92" x2="880.0" y2="426" stroke="#d7dce2" stroke-width="1"/>
+<text x="880.0" y="446" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">400</text>
+<text x="286" y="131.66666666666669" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">1B minicpm</text>
+<rect x="300" y="106.66666666666667" width="487.2" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
+<rect x="300" y="128.66666666666669" width="487.983" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
+<text x="793.2" y="120.66666666666667" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">336</text>
+<text x="793.983" y="142.66666666666669" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">336.54</text>
+<text x="286" y="185.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">4B qwen3.5</text>
+<rect x="300" y="160.0" width="133.603" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
+<rect x="300" y="182.0" width="135.0965" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
+<text x="439.603" y="174.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">92.14</text>
+<text x="441.0965" y="196.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">93.17</text>
+<text x="286" y="238.33333333333334" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">Nemotron 4B</text>
+<rect x="300" y="213.33333333333334" width="161.0225" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
+<rect x="300" y="235.33333333333334" width="158.70250000000001" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
+<text x="467.02250000000004" y="227.33333333333334" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">111.05</text>
+<text x="464.7025" y="249.33333333333334" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">109.45</text>
+<text x="286" y="291.6666666666667" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">8B DSR1</text>
+<rect x="300" y="266.6666666666667" width="92.8" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
+<rect x="300" y="288.6666666666667" width="93.525" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
+<text x="398.8" y="280.6666666666667" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">64</text>
+<text x="399.525" y="302.6666666666667" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">64.5</text>
+<text x="286" y="345.00000000000006" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">9B plain</text>
+<rect x="300" y="320.00000000000006" width="73.71800000000002" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
+<rect x="300" y="342.00000000000006" width="75.1245" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
+<text x="379.718" y="334.00000000000006" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">50.84</text>
+<text x="381.1245" y="356.00000000000006" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">51.81</text>
+<text x="286" y="398.33333333333337" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">9B + MTP w1</text>
+<rect x="300" y="373.33333333333337" width="108.46" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
+<rect x="300" y="395.33333333333337" width="75.1245" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
+<text x="414.46" y="387.33333333333337" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">74.8</text>
+<text x="381.1245" y="409.33333333333337" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">51.81</text>
+<rect x="640" y="70" width="14" height="14" rx="3" fill="#2f6f9f" stroke="none"/>
+<text x="660" y="82" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1f2328">TIR-A</text>
+<rect x="790" y="70" width="14" height="14" rx="3" fill="#aeb6bf" stroke="none"/>
+<text x="810" y="82" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1f2328">llama.cpp</text>
+<text x="40" y="486" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6572">数据：docs/reports/2026-11-09-tir-a-speed-history.md §3.2；1B 为 329–343 的中值 336，8B 为 63.7–64.3 的中值 64.0；128 gen token。</text>
+</svg>

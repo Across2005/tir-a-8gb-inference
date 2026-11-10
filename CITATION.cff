@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "TIR-A: An 8 GiB-First Local Inference Engine on Windows (llama.cpp fork + 14-function C ABI)"
+authors:
+  - name: "TIR-A contributors"
+date-released: 2026-11-10
+url: "https://github.com/Across2005/tir-a-8gb-inference"
+repository-code: "https://github.com/Across2005/tir-a-8gb-inference"
+license: MIT
+abstract: >-
+  A staged engineering report on building an in-process local inference DLL for
+  a single Windows laptop with an 8 GiB RTX 5060 Laptop GPU, covering a 14-function
+  C ABI, MTP speculative decoding, chunked prefill, measurement discipline, and
+  the hardware limits that stop 8B models at roughly 57 tok/s.
+keywords:
+  - local inference
+  - llama.cpp
+  - C ABI
+  - MTP
+  - CUDA
+  - Windows
+  - GGUF

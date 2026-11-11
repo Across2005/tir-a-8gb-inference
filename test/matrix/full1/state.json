@@ -1,0 +1,99 @@
+{
+  "done": {
+    "qwen35-0.8b-q4km": "ok",
+    "qwen3-0.6b-q8": "ok",
+    "minicpm5-1b": "ok",
+    "qwen35-4.2b-q3km": "ok",
+    "nemotron-4b-q4_0": "ok",
+    "qwen35-4.2b-iq4xs": "ok",
+    "qwen35-4.2b-q4_0": "ok",
+    "qwen35-opus-4b": "ok",
+    "nemotron-nano-4b-q4km": "ok",
+    "bonsai-27b-q1_0": "ok",
+    "dsr1-8b-q4km": "ok",
+    "qwen9b-q4_0": "ok",
+    "q3.5-9b": "ok",
+    "qwythos9b": "ok",
+    "qwen9b-q4km": "ok",
+    "glm4.6v-q4km": "ok",
+    "qwen9b-q5km": "ok",
+    "gemma4-12b-q4_0": "ok",
+    "spark-x2.5-4b": "skip",
+    "gemma4-26b-a4b": "skip"
+  },
+  "stop": "user_stopped_oversize",
+  "cooldown": {
+    "qwen35-0.8b-q4km": {
+      "cooldown_s": 91.2,
+      "cooldown_temp_c": 50.0
+    },
+    "qwen3-0.6b-q8": {
+      "cooldown_s": 91.1,
+      "cooldown_temp_c": 48.0
+    },
+    "minicpm5-1b": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 49.0
+    },
+    "qwen35-4.2b-q3km": {
+      "cooldown_s": 5.1,
+      "cooldown_temp_c": 57.0
+    },
+    "nemotron-4b-q4_0": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 60.0
+    },
+    "qwen35-4.2b-iq4xs": {
+      "cooldown_s": 5.1,
+      "cooldown_temp_c": 56.0
+    },
+    "qwen35-4.2b-q4_0": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 60.0
+    },
+    "qwen35-opus-4b": {
+      "cooldown_s": 5.1,
+      "cooldown_temp_c": 57.0
+    },
+    "nemotron-nano-4b-q4km": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 59.0
+    },
+    "bonsai-27b-q1_0": {
+      "cooldown_s": 5.1,
+      "cooldown_temp_c": 56.0
+    },
+    "dsr1-8b-q4km": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 59.0
+    },
+    "qwen9b-q4_0": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 59.0
+    },
+    "q3.5-9b": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 51.0
+    },
+    "qwythos9b": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 58.0
+    },
+    "qwen9b-q4km": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 58.0
+    },
+    "glm4.6v-q4km": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 51.0
+    },
+    "qwen9b-q5km": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 58.0
+    },
+    "gemma4-12b-q4_0": {
+      "cooldown_s": 0.1,
+      "cooldown_temp_c": 52.0
+    }
+  }
+}

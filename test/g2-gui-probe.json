@@ -1,0 +1,10 @@
+{
+  "openedModelMenu": "模型\nDeepSeek-V4.1-Flash-1017",
+  "probe": {
+    "hits": [],
+    "menuItems": [
+      "模型\nDeepSeek-V4.1-Flash-1017"
+    ],
+    "hasLocalLlama": false
+  }
+}

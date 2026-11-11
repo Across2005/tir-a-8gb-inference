@@ -1,0 +1,35 @@
+{
+  "startedAt": "2026-11-09T01:56:59.208Z",
+  "start": {
+    "running": true,
+    "model": "qwen-qwen3.8-9b-distill-gguf-qwen3.8-9b-q5_k_m",
+    "port": 18196,
+    "pid": 21560,
+    "startedAt": 1794189425351,
+    "lastError": null,
+    "warnings": [],
+    "ctx": 16384,
+    "kv": "q4_0",
+    "mtp": {
+      "enabled": true,
+      "reason": "auto: nextn head detected",
+      "requested": "auto",
+      "modelMtp": true,
+      "nextnLayers": 1,
+      "fallbackCtx": null,
+      "acceptance": null,
+      "meanLen": null
+    },
+    "configErrors": [],
+    "vram": {
+      "freeMiB": 6868,
+      "needMiB": 7359
+    },
+    "effective": {
+      "ctx": 16384,
+      "kv": "q4_0",
+      "ngl": 99
+    },
+    "logPath": "C:\\Users\\19207\\AppData\\Local\\Temp\\mtp-stability-NHH7Ey\\qwen-qwen3.8-9b-distill-gguf-qwen3.8-9b-q5_k_m-2026-11-09T01-56-59-751Z.log"
+  }
+}

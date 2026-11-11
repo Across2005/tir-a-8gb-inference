@@ -1,0 +1,64 @@
+{
+  "files": {
+    "a": true,
+    "b": true,
+    "c": true,
+    "d": true
+  },
+  "baseline_ms": 15.081,
+  "baseline_tok_s": 66.31,
+  "callback": {
+    "cb_false": 30756,
+    "cb_true": 30756,
+    "equal": true,
+    "ms": 18.841,
+    "tok_s": 53.08
+  },
+  "zero_copy": {
+    "ms": 24.627,
+    "delta_vs_b": 5.785999999999998,
+    "ids_equal_tier": true,
+    "ids_equal_stock": false,
+    "copy_ms_per_token": 0.0,
+    "pointer_type": 1
+  },
+  "h2d": {
+    "ms": 32.599,
+    "delta_vs_b": 13.757999999999996,
+    "ids_equal_tier": true,
+    "ids_equal_stock": false,
+    "copy_ms_per_token": 23.063,
+    "tensor": "output.weight",
+    "tensor_mib": 486.86,
+    "scaled_limit_ms": 28.53
+  },
+  "tier_vs_stock_ids_equal": false,
+  "h2d_bench": [
+    {
+      "bench": "h2d",
+      "mib": 64,
+      "iters": 20,
+      "ms": 111.955,
+      "gbps": 11.99
+    },
+    {
+      "bench": "h2d",
+      "mib": 256,
+      "iters": 20,
+      "ms": 256.152,
+      "gbps": 20.96
+    },
+    {
+      "bench": "h2d",
+      "mib": 512,
+      "iters": 20,
+      "ms": 571.04,
+      "gbps": 18.8
+    }
+  ],
+  "h2d_bench_max_gbps": 20.96,
+  "gate_pass": true,
+  "notes": [
+    "tier-mode baseline differs from stock baseline (fusion/graph disabled); gate uses tier baseline"
+  ]
+}

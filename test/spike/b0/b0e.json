@@ -1,0 +1,3 @@
+{"bench":"h2d","mib":64,"iters":20,"ms":111.955,"gbps":11.99}
+{"bench":"h2d","mib":256,"iters":20,"ms":256.152,"gbps":20.96}
+{"bench":"h2d","mib":512,"iters":20,"ms":571.040,"gbps":18.80}

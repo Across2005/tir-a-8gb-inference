@@ -1,0 +1,1 @@
+{"schema":"tir.p0-gate/v1","ctx":16384,"mtp":1,"tok_s_avg":72.61,"tok_s_best":72.98,"ttft_ms":187.87,"acceptance":0.882,"mean_len":1.882,"gen_tokens":128}

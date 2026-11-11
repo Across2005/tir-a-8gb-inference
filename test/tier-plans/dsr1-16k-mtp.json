@@ -1,0 +1,32 @@
+{
+ "schema": "tir.plan/v1",
+ "model": "E:\\model\\bionic\\lmstudio-community\\DeepSeek-R1-0528-Qwen3-8B-GGUF\\DeepSeek-R1-0528-Qwen3-8B-Q4_K_M.gguf",
+ "arch": "qwen3",
+ "ctx": 16384,
+ "kv_type": "q4_0",
+ "compute_mib": 512,
+ "reserve_mib": 815,
+ "tiers": {
+  "t0_mib": 4789,
+  "t1_mib": 0,
+  "t2_mib": 0
+ },
+ "resident": [
+  "blk.*.attn_*",
+  "blk.*.*norm*",
+  "output.weight",
+  "token_embd.weight"
+ ],
+ "stream_host": [],
+ "stream_disk": [],
+ "expected_tok_s": [
+  18.0,
+  28.0
+ ],
+ "warnings": [
+  "q8 KV does not fit; using q4 KV"
+ ],
+ "why": "q4 KV fits free VRAM",
+ "feasible": true,
+ "backend": "cuda"
+}

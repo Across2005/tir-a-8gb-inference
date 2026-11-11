@@ -1,0 +1,37 @@
+✔ stream translates SSE into text chunks, usage and finish (9.2192ms)
+✔ length finish reason maps to max-tokens (0.6907ms)
+✔ reasoning_content becomes a reasoning block before the text block (1.0283ms)
+✔ stream terminates on finish_reason even without [DONE] (2.5822ms)
+✔ tools are rejected instead of being dropped (1.4868ms)
+✔ image content is rejected (0.3713ms)
+✔ upstream non-2xx becomes UPSTREAM_ERROR with status (0.6901ms)
+✔ already aborted signal rejects with ABORTED (0.5129ms)
+✔ missing model resolution reports MODEL_NOT_FOUND (0.5258ms)
+✔ config errors hide the catalog and fail streams (0.4207ms)
+✔ buildServerArgs uses the v1 launch contract (1.8239ms)
+✔ buildServerArgs omits flash attention when disabled (0.228ms)
+✔ buildServerArgs appends draft-mtp only when requested (0.3042ms)
+✔ slugify produces stable ids from relative paths (2.1648ms)
+✔ scan includes large gguf files and excludes mmproj, embed and small files (30.4237ms)
+✔ refreshIfStale caches and rescans after the TTL (7.0065ms)
+✔ duplicate slugs get a stable path-hash suffix (9.6333ms)
+✔ readGgufInfo detects MTP via nextn metadata or tensors (5.9398ms)
+✔ catalog entries expose mtp from the GGUF header (3.5901ms)
+﹣ qwen9b streams and the service switches models cleanly (0.8814ms) # SKIP
+✔ parseSse reassembles frames split across chunks (7.4837ms)
+✔ toOpenAIMessages joins text blocks and maps developer to system (1.1895ms)
+✔ toOpenAIMessages rejects tool roles and file blocks (0.6281ms)
+✔ missing llama-server is reported as a configuration error, not a crash (6.0152ms)
+✔ unknown model reports MODEL_NOT_FOUND (6.808ms)
+✔ low free VRAM refuses to start with an actionable message (6.9977ms)
+✔ stop is idempotent and leaves no running state (4.2318ms)
+✔ resolveMtp enables draft-mtp only for nextn models in auto mode (0.295ms)
+✔ invalid mtp value is a configuration error (3.7373ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 384.4338

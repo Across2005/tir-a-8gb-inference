@@ -1,24 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520">
 <rect width="980" height="520" fill="#ffffff"/>
-<text x="40" y="42" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2328">图 4 128 token 的时间分解：plain 与 MTP</text>
-<text x="40" y="68" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#8a8f98">同一模型 qwen9b-Q4_K_M；prefill 不计入（由 TTFT 单独计）</text>
-<text x="40" y="184" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#1f2328" text-anchor="start" font-weight="700">plain  总计 2304 ms</text>
-<rect x="150" y="150" width="678.8700913162737" height="46" rx="0" fill="#2f6f9f" stroke="#ffffff" stroke-width="1"/>
-<text x="156" y="178" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#ffffff" text-anchor="start" font-weight="400">GPU decode (eval) 2235</text>
-<rect x="828.8700913162737" y="150" width="7.750164924828998" height="46" rx="0" fill="#6b9bc3" stroke="#ffffff" stroke-width="1"/>
-<rect x="836.6202562411028" y="150" width="1" height="46" rx="0" fill="#9dbdd8" stroke="#ffffff" stroke-width="1"/>
-<rect x="836.7995034894622" y="150" width="1" height="46" rx="0" fill="#c9dbe9" stroke="#ffffff" stroke-width="1"/>
-<rect x="836.8116558452831" y="150" width="13.188344154716846" height="46" rx="0" fill="#c26a2b" stroke="#ffffff" stroke-width="1"/>
-<text x="40" y="314" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#1f2328" text-anchor="start" font-weight="700">MTP  总计 1586 ms</text>
-<rect x="150" y="280" width="550.2729725640509" height="46" rx="0" fill="#2f6f9f" stroke="#ffffff" stroke-width="1"/>
-<text x="156" y="308" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#ffffff" text-anchor="start" font-weight="400">GPU verify (prompt_eval) 1247</text>
-<rect x="700.2729725640509" y="280" width="9.562865644543072" height="46" rx="0" fill="#6b9bc3" stroke="#ffffff" stroke-width="1"/>
-<rect x="709.8358382085939" y="280" width="1" height="46" rx="0" fill="#9dbdd8" stroke="#ffffff" stroke-width="1"/>
-<rect x="709.9682267500505" y="280" width="1" height="46" rx="0" fill="#c9dbe9" stroke="#ffffff" stroke-width="1"/>
-<rect x="709.9814656041962" y="280" width="140.01853439580393" height="46" rx="0" fill="#c26a2b" stroke="#ffffff" stroke-width="1"/>
-<text x="715.9814656041962" y="308" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#ffffff" text-anchor="start" font-weight="400">host 残差 317</text>
-<text x="40" y="390" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">MTP 的 verify 批记在 prompt_eval_ms，plain 的 decode 记在 eval_ms；</text>
-<text x="40" y="408" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">两者用同一加法式，只是归属相反。旧版漏减 prompt_eval，才得出 91%。</text>
+<text x="40" y="42" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2328">图 7 TTFT 随 prompt 长度变化</text>
+<text x="40" y="68" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#8a8f98">每个点是该模型在 ceiling harness 下的三次测量中位</text>
+<polyline points="118.1,429.9 286.4,429.2 847.2,426.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.9 286.4,429.3 847.2,426.1" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="117.7,429.9 282.8,429.2 833.1,426.1" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.4 286.4,426.4 847.2,415.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.7,429.5 290.1,427.0 861.4,417.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.5 286.4,426.9 847.2,417.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.5 286.4,427.0 847.2,417.8" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.5 286.4,426.6 847.2,416.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.7,429.5 290.1,426.9 861.4,417.1" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,427.6 286.4,414.6 847.2,369.2" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.1 286.4,424.6 847.2,406.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.2 286.4,425.1 847.2,410.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.1 286.4,424.5 847.2,408.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.1 286.4,424.5 847.2,408.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.1 286.4,424.5 847.2,408.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.1 286.4,424.0 847.2,404.4" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.0 286.4,424.3 847.2,408.0" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="117.7,400.4 282.8,151.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.4,404.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<text x="90.0" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">0</text>
+<text x="264.7092223821926" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">2000</text>
+<text x="439.4184447643852" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">4000</text>
+<text x="614.1276671465777" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">6000</text>
+<text x="788.8368895287704" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">8000</text>
+<line x1="90" y1="430.0" x2="900" y2="430.0" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="434.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">0</text>
+<line x1="90" y1="427.16577658145917" x2="900" y2="427.16577658145917" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="431.16577658145917" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">500</text>
+<line x1="90" y1="424.33155316291834" x2="900" y2="424.33155316291834" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="428.33155316291834" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">1000</text>
+<line x1="90" y1="421.49732974437745" x2="900" y2="421.49732974437745" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="425.49732974437745" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">1500</text>
+<line x1="90" y1="418.6631063258366" x2="900" y2="418.6631063258366" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="422.6631063258366" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">2000</text>
+<line x1="90" y1="415.8288829072958" x2="900" y2="415.8288829072958" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="419.8288829072958" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">2500</text>
+<text x="495.0" y="468" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="middle" font-weight="400">prompt tokens</text>
+<text x="30" y="100" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">TTFT ms</text>
 <line x1="40" y1="474" x2="940" y2="474" stroke="#8a8f98" stroke-width="1"/>
-<text x="40" y="496" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">数据：build/logs/d1-clean-mtp0.raw、d1-clean-mtp1.raw（最后一轮）</text>
+<text x="40" y="496" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">数据：test/matrix/full1/master.csv（ttft_S/M/L 行，prefill_batch=512）</text>
 </svg>

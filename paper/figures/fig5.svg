@@ -1,45 +1,71 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520">
 <rect width="980" height="520" fill="#ffffff"/>
-<text x="40" y="42" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2328">图 7 TTFT 随 prompt 长度变化</text>
-<text x="40" y="68" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#8a8f98">每个点是该模型在 ceiling harness 下的三次测量中位</text>
-<polyline points="118.1,429.9 286.4,429.2 847.2,426.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.9 286.4,429.3 847.2,426.1" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="117.7,429.9 282.8,429.2 833.1,426.1" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.4 286.4,426.4 847.2,415.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.7,429.5 290.1,427.0 861.4,417.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.5 286.4,426.9 847.2,417.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.5 286.4,427.0 847.2,417.8" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.5 286.4,426.6 847.2,416.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.7,429.5 290.1,426.9 861.4,417.1" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,427.6 286.4,414.6 847.2,369.2" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.1 286.4,424.6 847.2,406.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.2 286.4,425.1 847.2,410.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.1 286.4,424.5 847.2,408.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.1 286.4,424.5 847.2,408.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.1 286.4,424.5 847.2,408.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.1 286.4,424.0 847.2,404.4" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.1,429.0 286.4,424.3 847.2,408.0" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="117.7,400.4 282.8,151.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<polyline points="118.4,404.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
-<text x="90.0" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">0</text>
-<text x="264.7092223821926" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">2000</text>
-<text x="439.4184447643852" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">4000</text>
-<text x="614.1276671465777" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">6000</text>
-<text x="788.8368895287704" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">8000</text>
-<line x1="90" y1="430.0" x2="900" y2="430.0" stroke="#e8edf2" stroke-width="1"/>
-<text x="82" y="434.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">0</text>
-<line x1="90" y1="427.16577658145917" x2="900" y2="427.16577658145917" stroke="#e8edf2" stroke-width="1"/>
-<text x="82" y="431.16577658145917" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">500</text>
-<line x1="90" y1="424.33155316291834" x2="900" y2="424.33155316291834" stroke="#e8edf2" stroke-width="1"/>
-<text x="82" y="428.33155316291834" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">1000</text>
-<line x1="90" y1="421.49732974437745" x2="900" y2="421.49732974437745" stroke="#e8edf2" stroke-width="1"/>
-<text x="82" y="425.49732974437745" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">1500</text>
-<line x1="90" y1="418.6631063258366" x2="900" y2="418.6631063258366" stroke="#e8edf2" stroke-width="1"/>
-<text x="82" y="422.6631063258366" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">2000</text>
-<line x1="90" y1="415.8288829072958" x2="900" y2="415.8288829072958" stroke="#e8edf2" stroke-width="1"/>
-<text x="82" y="419.8288829072958" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">2500</text>
-<text x="495.0" y="468" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="middle" font-weight="400">prompt tokens</text>
-<text x="30" y="100" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">TTFT ms</text>
+<text x="40" y="42" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2328">图 5 权重体积与 8 GiB 显存的关系</text>
+<text x="40" y="68" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#8a8f98">柱为 GGUF 文件体积；虚线为 8151 MiB 总显存，点线为 6830 MiB 可用</text>
+<text x="40" y="111" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen35-0.8b-q4km</text>
+<rect x="250" y="100" width="23.43703868634102" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="279.437038686341" y="111" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">0.49 GiB</text>
+<text x="40" y="133" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen3-0.6b-q8</text>
+<rect x="250" y="122" width="28.467283539400928" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="284.4672835394009" y="133" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">0.59 GiB</text>
+<text x="40" y="155" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">minicpm5-1b</text>
+<rect x="250" y="144" width="30.68871896010562" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="286.68871896010563" y="155" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">0.64 GiB</text>
+<text x="40" y="177" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen35-4.2b-q3km</text>
+<rect x="250" y="166" width="101.15712687485043" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="357.1571268748504" y="177" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">2.10 GiB</text>
+<text x="40" y="199" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">nemotron-4b-q4_0</text>
+<rect x="250" y="188" width="109.87938764187444" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="365.8793876418745" y="199" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">2.28 GiB</text>
+<text x="40" y="221" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen35-4.2b-iq4xs</text>
+<rect x="250" y="210" width="113.15378004685975" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="369.15378004685977" y="221" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">2.35 GiB</text>
+<text x="40" y="243" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen35-4.2b-q4_0</text>
+<rect x="250" y="232" width="113.821922442846" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="369.821922442846" y="243" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">2.36 GiB</text>
+<text x="40" y="265" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen35-opus-4b</text>
+<rect x="250" y="254" width="121.23222901651168" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="377.23222901651167" y="265" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">2.51 GiB</text>
+<text x="40" y="287" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">nemotron-nano-4b-q4km</text>
+<rect x="250" y="276" width="127.13471145010313" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="383.1347114501031" y="287" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">2.63 GiB</text>
+<text x="40" y="309" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">bonsai-27b-q1_0</text>
+<rect x="250" y="298" width="170.42112989479193" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="426.42112989479193" y="309" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">3.53 GiB</text>
+<text x="40" y="331" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">dsr1-8b-q4km</text>
+<rect x="250" y="320" width="225.6650022137228" height="14" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="481.6650022137228" y="331" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">4.68 GiB</text>
+<text x="40" y="353" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen9b-q4_0</text>
+<rect x="250" y="342" width="244.4254467621797" height="14" rx="4" fill="#c26a2b" stroke="#c26a2b" stroke-width="1"/>
+<text x="500.4254467621797" y="353" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">5.07 GiB</text>
+<text x="40" y="375" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">q3.5-9b</text>
+<rect x="250" y="364" width="252.46146960999283" height="14" rx="4" fill="#c26a2b" stroke="#c26a2b" stroke-width="1"/>
+<text x="508.46146960999283" y="375" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">5.23 GiB</text>
+<text x="40" y="397" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwythos9b</text>
+<rect x="250" y="386" width="252.46146960999283" height="14" rx="4" fill="#c26a2b" stroke="#c26a2b" stroke-width="1"/>
+<text x="508.46146960999283" y="397" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">5.23 GiB</text>
+<text x="40" y="419" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen9b-q4km</text>
+<rect x="250" y="408" width="259.2460599095111" height="14" rx="4" fill="#c26a2b" stroke="#c26a2b" stroke-width="1"/>
+<text x="515.2460599095111" y="419" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">5.37 GiB</text>
+<text x="40" y="441" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">glm4.6v-q4km</text>
+<rect x="250" y="430" width="276.6867851799455" height="14" rx="4" fill="#c26a2b" stroke="#c26a2b" stroke-width="1"/>
+<text x="532.6867851799454" y="441" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">5.73 GiB</text>
+<text x="40" y="463" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen9b-q5km</text>
+<rect x="250" y="452" width="298.00200010203577" height="14" rx="4" fill="#c26a2b" stroke="#c26a2b" stroke-width="1"/>
+<text x="554.0020001020357" y="463" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">6.18 GiB</text>
+<text x="40" y="485" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">gemma4-12b-q4_0</text>
+<rect x="250" y="474" width="312.7628019657526" height="14" rx="4" fill="#c26a2b" stroke="#c26a2b" stroke-width="1"/>
+<text x="568.7628019657526" y="485" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">6.48 GiB</text>
+<text x="40" y="507" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">spark-x2.5-4b</text>
+<rect x="250" y="496" width="369.58443882992293" height="14" rx="4" fill="#a33" stroke="#a33" stroke-width="1"/>
+<text x="625.5844388299229" y="507" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">7.66 GiB</text>
+<text x="40" y="529" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">gemma4-26b-a4b</text>
+<rect x="250" y="518" width="648.148148148148" height="14" rx="4" fill="#a33" stroke="#a33" stroke-width="1"/>
+<text x="904.148148148148" y="529" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">13.43 GiB</text>
+<line x1="634.0725453000232" y1="94" x2="634.0725453000232" y2="544" stroke="#1f2328" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="638.0725453000232" y="90" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">总显存 8.0 GiB</text>
+<line x1="571.8274425713603" y1="94" x2="571.8274425713603" y2="544" stroke="#1f2328" stroke-width="1.2" stroke-dasharray="2 3"/>
+<text x="575.8274425713603" y="90" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">可用 6.7 GiB</text>
 <line x1="40" y1="474" x2="940" y2="474" stroke="#8a8f98" stroke-width="1"/>
-<text x="40" y="496" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">数据：test/matrix/full1/master.csv（ttft_S/M/L 行，prefill_batch=512）</text>
+<text x="40" y="496" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">数据：master.csv profile 行（weights_bytes）与 nvidia-smi memory.total</text>
 </svg>

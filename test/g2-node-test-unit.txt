@@ -1,0 +1,32 @@
+✔ stream translates SSE into text chunks, usage and finish (5.4449ms)
+✔ length finish reason maps to max-tokens (0.4933ms)
+✔ reasoning_content becomes a reasoning block before the text block (0.6201ms)
+✔ stream terminates on finish_reason even without [DONE] (1.5601ms)
+✔ tools are rejected instead of being dropped (1.4678ms)
+✔ image content is rejected (0.2388ms)
+✔ upstream non-2xx becomes UPSTREAM_ERROR with status (0.3407ms)
+✔ already aborted signal rejects with ABORTED (0.2197ms)
+✔ missing model resolution reports MODEL_NOT_FOUND (0.2116ms)
+✔ config errors hide the catalog and fail streams (0.3265ms)
+✔ buildServerArgs uses the v1 launch contract (1.2793ms)
+✔ buildServerArgs omits flash attention when disabled (0.1276ms)
+✔ slugify produces stable ids from relative paths (1.0814ms)
+✔ scan includes large gguf files and excludes mmproj, embed and small files (23.9075ms)
+✔ refreshIfStale caches and rescans after the TTL (4.1993ms)
+✔ duplicate slugs get a stable path-hash suffix (5.6274ms)
+﹣ qwen9b streams and the service switches models cleanly (0.7ms) # SKIP
+✔ parseSse reassembles frames split across chunks (4.6582ms)
+✔ toOpenAIMessages joins text blocks and maps developer to system (0.8097ms)
+✔ toOpenAIMessages rejects tool roles and file blocks (0.5346ms)
+✔ missing llama-server is reported as a configuration error, not a crash (4.2871ms)
+✔ unknown model reports MODEL_NOT_FOUND (5.2994ms)
+✔ low free VRAM refuses to start with an actionable message (4.4606ms)
+✔ stop is idempotent and leaves no running state (2.9225ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 202.9758

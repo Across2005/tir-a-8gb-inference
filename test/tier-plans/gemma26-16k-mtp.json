@@ -1,0 +1,27 @@
+{
+ "schema": "tir.plan/v1",
+ "model": "E:\\model\\bionic\\lmstudio-community\\gemma-4-26B-A4B-it-QAT-GGUF\\gemma-4-26B-A4B-it-QAT-Q4_0.gguf",
+ "arch": "gemma4",
+ "ctx": 16384,
+ "kv_type": "q8_0",
+ "compute_mib": 512,
+ "reserve_mib": 815,
+ "tiers": {
+  "t0_mib": 0,
+  "t1_mib": 0,
+  "t2_mib": 0
+ },
+ "resident": [],
+ "stream_host": [],
+ "stream_disk": [],
+ "expected_tok_s": [
+  0.0,
+  0.0
+ ],
+ "warnings": [
+  "MoE model: B1 only plans dense models; B2/B3 handle experts"
+ ],
+ "why": "model has 128 experts; B1 REFUSE",
+ "feasible": false,
+ "backend": "refuse"
+}

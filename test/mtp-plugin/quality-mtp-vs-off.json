@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-09T02:28:06.544Z",
+  "modelConfigured": "Qwen3.8-9B-Q5_K_M 16k q4_0 greedy",
+  "off": {
+    "mtp": {
+      "enabled": false,
+      "reason": "mtp=off",
+      "requested": "off",
+      "modelMtp": true,
+      "nextnLayers": 1,
+      "fallbackCtx": null,
+      "acceptance": null,
+      "meanLen": null
+    },
+    "content": "",
+    "reasoning": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Topic: The capital of France.\n    *   Constraint: Write *one* short sentence.\n\n2.  **Identify the Fact:** The capital of France is Paris.\n\n3.  **Draft Sentences:**\n    *   Paris is the capital of France.\n    *   The capital of France is Paris.\n    *   France's capital city is Paris.\n\n4.  **Select the Best Option:** \"Paris is the capital of France.\" is simple, direct, and meets all constraints.\n\n5. ",
+    "tok_s": 46.814028874303226,
+    "predicted_n": 128,
+    "finish": "length"
+  },
+  "on": {
+    "mtp": {
+      "enabled": true,
+      "reason": "mtp=on (nextn detected)",
+      "requested": "on",
+      "modelMtp": true,
+      "nextnLayers": 1,
+      "fallbackCtx": null,
+      "acceptance": null,
+      "meanLen": null
+    },
+    "content": "",
+    "reasoning": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Topic: The capital of France.\n    *   Constraint: Write *one* short sentence.\n\n2.  **Identify the Fact:** The capital of France is Paris.\n\n3.  **Draft Sentences:**\n    *   Paris is the capital of France.\n    *   The capital of France is Paris.\n    *   France's capital city is Paris.\n\n4.  **Select the Best Option:** \"Paris is the capital of France.\" is simple, direct, and meets all constraints.\n\n5. ",
+    "tok_s": 46.02920208559402,
+    "predicted_n": 128,
+    "finish": "length"
+  },
+  "identicalText": true,
+  "firstDiff": -1,
+  "offChars": 457,
+  "onChars": 457,
+  "offReasoningChars": 457,
+  "onReasoningChars": 457
+}

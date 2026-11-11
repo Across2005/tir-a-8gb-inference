@@ -1,0 +1,9 @@
+[PASS] all-gpu 9B: weights+kv+compute+reserve fit free VRAM
+[PASS] tight 9B spills FFN: spill 11 FFN layers (0.49 GiB/token (MTP /3.2) <= 0.6 GiB budget)
+[PASS] 12B fits after q4/lower ctx: q4 KV fits free VRAM
+[PASS] 26B refused in B1: model has 128 experts; B1 REFUSE
+[PASS] hybrid KV counted: kv=256 MiB
+[PASS] sliding KV capped: kv=288 MiB
+[PASS] deterministic: 
+[PASS] MTP reduces per-token host bytes: t1=1617 MiB, expected=[49.6, 79.6]
+8/8 planner cases passed

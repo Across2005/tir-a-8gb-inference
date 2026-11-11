@@ -1,0 +1,12 @@
+{
+  "done": {
+    "minicpm5-1b": "ok"
+  },
+  "stop": null,
+  "cooldown": {
+    "minicpm5-1b": {
+      "cooldown_s": 91.3,
+      "cooldown_temp_c": 49.0
+    }
+  }
+}

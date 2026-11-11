@@ -1,0 +1,39 @@
+{
+ "schema": "tir.plan/v1",
+ "model": "E:\\model\\bionic\\lmstudio-community\\gemma-4-12B-it-QAT-GGUF\\gemma-4-12B-it-QAT-Q4_0.gguf",
+ "arch": "gemma4",
+ "ctx": 16384,
+ "kv_type": "q4_0",
+ "compute_mib": 512,
+ "reserve_mib": 815,
+ "tiers": {
+  "t0_mib": 5295,
+  "t1_mib": 1342,
+  "t2_mib": 0
+ },
+ "resident": [],
+ "stream_host": [
+  "blk.37.*",
+  "blk.38.*",
+  "blk.39.*",
+  "blk.40.*",
+  "blk.41.*",
+  "blk.42.*",
+  "blk.43.*",
+  "blk.44.*",
+  "blk.45.*",
+  "blk.46.*",
+  "blk.47.*"
+ ],
+ "stream_disk": [],
+ "expected_tok_s": [
+  12.2,
+  21.7
+ ],
+ "warnings": [
+  "host spill exceeds PCIe target; performance will be below target"
+ ],
+ "why": "host spill 11 FFN layers (1.31 GiB/token)",
+ "feasible": true,
+ "backend": "host"
+}

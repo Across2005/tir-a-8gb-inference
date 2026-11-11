@@ -1,0 +1,21 @@
+# Power record (read-only, no nvidia-smi -pl executed)
+date=2026-11-09T09:57:13.1765304+08:00
+
+Average Power Draw                             : 16.67 W
+Instantaneous Power Draw                       : 17.95 W
+Current Power Limit                        : 115.00 W
+Requested Power Limit                      : N/A
+Default Power Limit                        : 50.00 W
+Min Power Limit                                : 5.00 W
+Max Power Limit                                : 115.00 W
+Average Power Draw                             : N/A
+Instantaneous Power Draw                       : N/A
+Average Power Draw                             : N/A
+Instantaneous Power Draw                       : N/A
+Current Power Limit                            : N/A
+Requested Power Limit                          : N/A
+Default Power Limit                            : N/A
+Min Power Limit                                : N/A
+Max Power Limit                                : N/A
+power.draw [W], power.limit [W], power.max_limit [W], clocks.current.memory [MHz], clocks.current.graphics [MHz], temperature.gpu, utilization.gpu [%]
+16.67 W, [N/A], 115.00 W, 9001 MHz, 1635 MHz, 47, 7 %

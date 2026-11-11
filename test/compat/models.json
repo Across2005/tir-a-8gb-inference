@@ -1,0 +1,43 @@
+{
+ "schema": "tir.compat-models/v1",
+ "ctx": 16384,
+ "kv": "q4_0",
+ "models": [
+  {
+   "name": "minicpm5",
+   "path": "E:\\model\\blobs\\sha256-b1c3bf2995e96cb792a0031e4e1497a500e9244c68ba17c24a7e6edf1fc59019",
+   "mtp": 0
+  },
+  {
+   "name": "qwen3.5-opus",
+   "path": "E:\\model\\blobs\\sha256-de8cf2454c46ec34e6b991dc11f5dd42d543926272d8a59d36ceb5a2eaf7962a",
+   "mtp": 0
+  },
+  {
+   "name": "nemotron4b",
+   "path": "E:\\model\\bionic\\lmstudio-community\\NVIDIA-Nemotron-3-Nano-4B-GGUF\\NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf",
+   "mtp": 0,
+   "known_issues": ["eog_on_sentence_final_period"]
+  },
+  {
+   "name": "dsr1-8b",
+   "path": "E:\\model\\bionic\\lmstudio-community\\DeepSeek-R1-0528-Qwen3-8B-GGUF\\DeepSeek-R1-0528-Qwen3-8B-Q4_K_M.gguf",
+   "mtp": 0
+  },
+  {
+   "name": "q3.5-9b",
+   "path": "E:\\model\\blobs\\sha256-e0978cd3b5741725cf43f609e9df02dbc6f6e2e2ead5ab6cb4790aeebab8435e",
+   "mtp": 0
+  },
+  {
+   "name": "qwythos9b",
+   "path": "E:\\model\\blobs\\sha256-f5472d13060827fa50779548264b9b9f6b94a9f67b77d5c5b4119b072b0e8780",
+   "mtp": 0
+  },
+  {
+   "name": "qwen9b",
+   "path": "E:\\model\\bionic\\Qwen\\Qwen3.8-9B-Distill-GGUF\\Qwen3.8-9B-Q5_K_M.gguf",
+   "mtp": 1
+  }
+ ]
+}

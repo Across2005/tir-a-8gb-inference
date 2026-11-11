@@ -1,0 +1,66 @@
+{"iteration":1,"at":"2026-11-09T01:44:12.439Z","gpu":{"freeMiB":310,"tempC":48,"powerW":21.32,"memClockMHz":12201},"request":{"status":200,"tok_s":44.56980586665988,"predicted_n":64,"wall_s":1.683},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":2,"at":"2026-11-09T01:44:24.496Z","gpu":{"freeMiB":283,"tempC":47,"powerW":12.36,"memClockMHz":9001},"request":{"status":200,"tok_s":79.52115641432795,"predicted_n":64,"wall_s":0.901},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":3,"at":"2026-11-09T01:44:35.649Z","gpu":{"freeMiB":335,"tempC":48,"powerW":17.35,"memClockMHz":9001},"request":{"status":200,"tok_s":27.904492224612557,"predicted_n":64,"wall_s":2.434},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":4,"at":"2026-11-09T01:44:48.505Z","gpu":{"freeMiB":222,"tempC":49,"powerW":18.81,"memClockMHz":9001},"request":{"status":200,"tok_s":28.700326227041444,"predicted_n":64,"wall_s":2.398},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":5,"at":"2026-11-09T01:45:01.291Z","gpu":{"freeMiB":239,"tempC":50,"powerW":16.63,"memClockMHz":9001},"request":{"status":200,"tok_s":29.346140050959804,"predicted_n":64,"wall_s":2.305},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":6,"at":"2026-11-09T01:45:14.001Z","gpu":{"freeMiB":258,"tempC":49,"powerW":13.98,"memClockMHz":9001},"request":{"status":200,"tok_s":29.444067955039372,"predicted_n":64,"wall_s":2.314},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":7,"at":"2026-11-09T01:45:26.784Z","gpu":{"freeMiB":340,"tempC":49,"powerW":14.83,"memClockMHz":9001},"request":{"status":200,"tok_s":29.95129349177409,"predicted_n":64,"wall_s":2.251},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":8,"at":"2026-11-09T01:45:39.450Z","gpu":{"freeMiB":336,"tempC":48,"powerW":13.1,"memClockMHz":9001},"request":{"status":200,"tok_s":29.194996626355945,"predicted_n":64,"wall_s":2.313},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":9,"at":"2026-11-09T01:45:52.235Z","gpu":{"freeMiB":342,"tempC":48,"powerW":15.67,"memClockMHz":9001},"request":{"status":200,"tok_s":29.208965576074984,"predicted_n":64,"wall_s":2.312},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":10,"at":"2026-11-09T01:46:05.006Z","gpu":{"freeMiB":260,"tempC":46,"powerW":10.54,"memClockMHz":810},"request":{"status":200,"tok_s":49.765352413738086,"predicted_n":64,"wall_s":1.642},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":11,"at":"2026-11-09T01:46:17.006Z","gpu":{"freeMiB":209,"tempC":46,"powerW":9.93,"memClockMHz":9001},"request":{"status":200,"tok_s":45.5193431920042,"predicted_n":64,"wall_s":1.528},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":12,"at":"2026-11-09T01:46:28.879Z","gpu":{"freeMiB":135,"tempC":45,"powerW":11,"memClockMHz":9001},"request":{"status":200,"tok_s":45.69164089561418,"predicted_n":64,"wall_s":1.496},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":13,"at":"2026-11-09T01:46:40.733Z","gpu":{"freeMiB":201,"tempC":45,"powerW":10.65,"memClockMHz":9001},"request":{"status":200,"tok_s":47.30162972884904,"predicted_n":64,"wall_s":1.445},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":14,"at":"2026-11-09T01:46:52.438Z","gpu":{"freeMiB":154,"tempC":45,"powerW":17.67,"memClockMHz":12201},"request":{"status":200,"tok_s":48.87574157300756,"predicted_n":64,"wall_s":1.377},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":15,"at":"2026-11-09T01:47:03.987Z","gpu":{"freeMiB":112,"tempC":46,"powerW":10.37,"memClockMHz":9001},"request":{"status":200,"tok_s":45.26564466900036,"predicted_n":64,"wall_s":1.508},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":16,"at":"2026-11-09T01:47:15.850Z","gpu":{"freeMiB":151,"tempC":48,"powerW":19.7,"memClockMHz":9001},"request":{"status":200,"tok_s":42.336262823519604,"predicted_n":64,"wall_s":1.592},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":17,"at":"2026-11-09T01:47:27.817Z","gpu":{"freeMiB":234,"tempC":49,"powerW":19.73,"memClockMHz":9001},"request":{"status":200,"tok_s":24.323591799165893,"predicted_n":64,"wall_s":2.73},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":18,"at":"2026-11-09T01:47:40.925Z","gpu":{"freeMiB":202,"tempC":49,"powerW":9.92,"memClockMHz":9001},"request":{"status":200,"tok_s":46.052092957977095,"predicted_n":64,"wall_s":1.491},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":19,"at":"2026-11-09T01:47:52.743Z","gpu":{"freeMiB":150,"tempC":48,"powerW":10.41,"memClockMHz":9001},"request":{"status":200,"tok_s":44.83124239469995,"predicted_n":64,"wall_s":1.514},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":20,"at":"2026-11-09T01:48:04.613Z","gpu":{"freeMiB":128,"tempC":48,"powerW":18.98,"memClockMHz":12201},"request":{"status":200,"tok_s":39.59726439470553,"predicted_n":64,"wall_s":1.759},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":21,"at":"2026-11-09T01:48:16.736Z","gpu":{"freeMiB":199,"tempC":46,"powerW":10.01,"memClockMHz":9001},"request":{"status":200,"tok_s":38.10332533163501,"predicted_n":64,"wall_s":1.789},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":22,"at":"2026-11-09T01:48:28.832Z","gpu":{"freeMiB":324,"tempC":47,"powerW":15.68,"memClockMHz":9001},"request":{"status":200,"tok_s":29.627037916965286,"predicted_n":64,"wall_s":2.269},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":23,"at":"2026-11-09T01:48:41.432Z","gpu":{"freeMiB":224,"tempC":47,"powerW":12.83,"memClockMHz":9001},"request":{"status":200,"tok_s":20.853897593460218,"predicted_n":64,"wall_s":3.198},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":24,"at":"2026-11-09T01:48:55.008Z","gpu":{"freeMiB":328,"tempC":49,"powerW":18.68,"memClockMHz":12201},"request":{"status":200,"tok_s":18.08941338616591,"predicted_n":64,"wall_s":3.659},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":25,"at":"2026-11-09T01:49:09.034Z","gpu":{"freeMiB":131,"tempC":50,"powerW":18.72,"memClockMHz":9001},"request":{"status":200,"tok_s":25.463568302788502,"predicted_n":64,"wall_s":2.697},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":26,"at":"2026-11-09T01:49:22.104Z","gpu":{"freeMiB":151,"tempC":48,"powerW":11.57,"memClockMHz":9001},"request":{"status":200,"tok_s":28.465094339196387,"predicted_n":64,"wall_s":2.378},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":27,"at":"2026-11-09T01:49:34.842Z","gpu":{"freeMiB":135,"tempC":48,"powerW":14.99,"memClockMHz":9001},"request":{"status":200,"tok_s":27.46876626870383,"predicted_n":64,"wall_s":2.455},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":28,"at":"2026-11-09T01:49:47.668Z","gpu":{"freeMiB":155,"tempC":49,"powerW":20.07,"memClockMHz":12201},"request":{"status":200,"tok_s":26.7314784798869,"predicted_n":64,"wall_s":2.513},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":29,"at":"2026-11-09T01:50:00.556Z","gpu":{"freeMiB":176,"tempC":51,"powerW":18.04,"memClockMHz":9001},"request":{"status":200,"tok_s":33.67582898665689,"predicted_n":64,"wall_s":1.995},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":30,"at":"2026-11-09T01:50:12.921Z","gpu":{"freeMiB":176,"tempC":51,"powerW":17.8,"memClockMHz":9001},"request":{"status":200,"tok_s":34.666927860874466,"predicted_n":64,"wall_s":1.934},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":31,"at":"2026-11-09T01:50:25.198Z","gpu":{"freeMiB":253,"tempC":51,"powerW":18.5,"memClockMHz":9001},"request":{"status":200,"tok_s":34.56312213619845,"predicted_n":64,"wall_s":1.94},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":32,"at":"2026-11-09T01:50:37.487Z","gpu":{"freeMiB":247,"tempC":51,"powerW":18.86,"memClockMHz":9001},"request":{"status":200,"tok_s":37.094259457269764,"predicted_n":64,"wall_s":1.812},"mtp":{"acceptance":0.86538,"meanLen":3.5,"fallbackCtx":null}}
+{"iteration":33,"at":"2026-11-09T01:50:49.639Z","gpu":{"freeMiB":7164,"tempC":51,"powerW":18.13,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":34,"at":"2026-11-09T01:50:59.948Z","gpu":{"freeMiB":7095,"tempC":49,"powerW":15.06,"memClockMHz":810},"error":"fetch failed"}
+{"iteration":35,"at":"2026-11-09T01:51:10.291Z","gpu":{"freeMiB":7052,"tempC":48,"powerW":9.19,"memClockMHz":810},"error":"fetch failed"}
+{"iteration":36,"at":"2026-11-09T01:51:20.539Z","gpu":{"freeMiB":7032,"tempC":47,"powerW":10.03,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":37,"at":"2026-11-09T01:51:30.766Z","gpu":{"freeMiB":7019,"tempC":45,"powerW":7.38,"memClockMHz":405},"error":"fetch failed"}
+{"iteration":38,"at":"2026-11-09T01:51:41.111Z","gpu":{"freeMiB":6982,"tempC":44,"powerW":10.53,"memClockMHz":810},"error":"fetch failed"}
+{"iteration":39,"at":"2026-11-09T01:51:51.436Z","gpu":{"freeMiB":6996,"tempC":43,"powerW":7.3,"memClockMHz":405},"error":"fetch failed"}
+{"iteration":40,"at":"2026-11-09T01:52:01.769Z","gpu":{"freeMiB":7074,"tempC":42,"powerW":10.35,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":41,"at":"2026-11-09T01:52:12.127Z","gpu":{"freeMiB":7096,"tempC":42,"powerW":10.49,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":42,"at":"2026-11-09T01:52:22.446Z","gpu":{"freeMiB":7091,"tempC":42,"powerW":11.04,"memClockMHz":810},"error":"fetch failed"}
+{"iteration":43,"at":"2026-11-09T01:52:32.775Z","gpu":{"freeMiB":7070,"tempC":42,"powerW":11.32,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":44,"at":"2026-11-09T01:52:43.111Z","gpu":{"freeMiB":7067,"tempC":41,"powerW":7.58,"memClockMHz":405},"error":"fetch failed"}
+{"iteration":45,"at":"2026-11-09T01:52:53.439Z","gpu":{"freeMiB":7073,"tempC":41,"powerW":16.89,"memClockMHz":12201},"error":"fetch failed"}
+{"iteration":46,"at":"2026-11-09T01:53:03.764Z","gpu":{"freeMiB":7088,"tempC":41,"powerW":15.14,"memClockMHz":12201},"error":"fetch failed"}
+{"iteration":47,"at":"2026-11-09T01:53:14.105Z","gpu":{"freeMiB":7055,"tempC":42,"powerW":15.95,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":48,"at":"2026-11-09T01:53:24.431Z","gpu":{"freeMiB":7060,"tempC":41,"powerW":11.06,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":49,"at":"2026-11-09T01:53:34.751Z","gpu":{"freeMiB":6872,"tempC":43,"powerW":16.5,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":50,"at":"2026-11-09T01:53:45.040Z","gpu":{"freeMiB":7042,"tempC":44,"powerW":16.6,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":51,"at":"2026-11-09T01:53:55.403Z","gpu":{"freeMiB":7051,"tempC":44,"powerW":17.6,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":52,"at":"2026-11-09T01:54:05.695Z","gpu":{"freeMiB":7047,"tempC":45,"powerW":17.64,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":53,"at":"2026-11-09T01:54:16.016Z","gpu":{"freeMiB":7047,"tempC":45,"powerW":17.84,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":54,"at":"2026-11-09T01:54:26.322Z","gpu":{"freeMiB":7048,"tempC":45,"powerW":17.63,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":55,"at":"2026-11-09T01:54:36.627Z","gpu":{"freeMiB":7048,"tempC":45,"powerW":17.68,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":56,"at":"2026-11-09T01:54:46.945Z","gpu":{"freeMiB":7048,"tempC":45,"powerW":17.08,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":57,"at":"2026-11-09T01:54:57.266Z","gpu":{"freeMiB":7048,"tempC":45,"powerW":17.44,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":58,"at":"2026-11-09T01:55:07.643Z","gpu":{"freeMiB":7048,"tempC":46,"powerW":17.84,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":59,"at":"2026-11-09T01:55:17.981Z","gpu":{"freeMiB":7052,"tempC":46,"powerW":17.63,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":60,"at":"2026-11-09T01:55:28.369Z","gpu":{"freeMiB":7016,"tempC":46,"powerW":19.77,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":61,"at":"2026-11-09T01:55:38.745Z","gpu":{"freeMiB":7000,"tempC":46,"powerW":17.75,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":62,"at":"2026-11-09T01:55:49.047Z","gpu":{"freeMiB":6996,"tempC":46,"powerW":17.69,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":63,"at":"2026-11-09T01:55:59.417Z","gpu":{"freeMiB":7004,"tempC":46,"powerW":17.56,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":64,"at":"2026-11-09T01:56:09.753Z","gpu":{"freeMiB":7001,"tempC":46,"powerW":17.91,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":65,"at":"2026-11-09T01:56:20.045Z","gpu":{"freeMiB":7019,"tempC":46,"powerW":17.51,"memClockMHz":9001},"error":"fetch failed"}
+{"iteration":66,"at":"2026-11-09T01:56:30.364Z","gpu":{"freeMiB":7016,"tempC":46,"powerW":17.79,"memClockMHz":9001},"error":"fetch failed"}

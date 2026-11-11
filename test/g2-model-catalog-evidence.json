@@ -1,0 +1,67 @@
+{
+  "capturedAt": "2026-11-09T09:00:27.7718409+08:00",
+  "default": {
+    "provider": "internatet",
+    "model": "DeepSeek-V4.1-Flash-1017"
+  },
+  "routableProviders": [
+    "deepseek-account",
+    "minimax-cn",
+    "internatet",
+    "local-llama"
+  ],
+  "localLlama": {
+    "id": "local-llama",
+    "name": "Local llama.cpp",
+    "models": [
+      {
+        "id": "lmstudio-community-bonsai-27b-gguf-bonsai-27b-q1_0",
+        "name": "Bonsai-27B-Q1_0",
+        "contextWindow": null,
+        "inputModalities": null
+      },
+      {
+        "id": "lmstudio-community-deepseek-r1-0528-qwen3-8b-gguf-deepseek-r1-0528-qwen3-8b-q4_k_m",
+        "name": "DeepSeek-R1-0528-Qwen3-8B-Q4_K_M",
+        "contextWindow": null,
+        "inputModalities": null
+      },
+      {
+        "id": "lmstudio-community-gemma-4-12b-it-qat-gguf-gemma-4-12b-it-qat-q4_0",
+        "name": "gemma-4-12B-it-QAT-Q4_0",
+        "contextWindow": null,
+        "inputModalities": null
+      },
+      {
+        "id": "lmstudio-community-gemma-4-26b-a4b-it-qat-gguf-gemma-4-26b-a4b-it-qat-q4_0",
+        "name": "gemma-4-26B-A4B-it-QAT-Q4_0",
+        "contextWindow": null,
+        "inputModalities": null
+      },
+      {
+        "id": "lmstudio-community-glm-4.6v-flash-gguf-glm-4.6v-flash-q4_k_m",
+        "name": "GLM-4.6V-Flash-Q4_K_M",
+        "contextWindow": null,
+        "inputModalities": null
+      },
+      {
+        "id": "lmstudio-community-nvidia-nemotron-3-nano-4b-gguf-nvidia-nemotron-3-nano-4b-q4_k_m",
+        "name": "NVIDIA-Nemotron-3-Nano-4B-Q4_K_M",
+        "contextWindow": null,
+        "inputModalities": null
+      },
+      {
+        "id": "qwen-qwen3.8-9b-distill-gguf-qwen3.8-9b-q5_k_m",
+        "name": "Qwen3.8-9B-Q5_K_M",
+        "contextWindow": null,
+        "inputModalities": null
+      },
+      {
+        "id": "sparkx-spark-x2.5-4b-gguf-spark-x2.5-4b",
+        "name": "Spark-X2.5-4B",
+        "contextWindow": null,
+        "inputModalities": null
+      }
+    ]
+  }
+}

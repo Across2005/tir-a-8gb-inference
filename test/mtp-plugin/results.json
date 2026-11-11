@@ -1,0 +1,173 @@
+{
+  "qwen16k": {
+    "name": "qwen9b 16k q4 MTP",
+    "config": {
+      "ctx": 16384,
+      "kv": "q8_0",
+      "mtp": "auto"
+    },
+    "entry": {
+      "id": "qwen-qwen3.8-9b-distill-gguf-qwen3.8-9b-q5_k_m",
+      "mtp": true,
+      "nextn": 1,
+      "sizeBytes": 6642543936
+    },
+    "start": {
+      "pid": 33472,
+      "port": 18180,
+      "mtp": {
+        "enabled": true,
+        "reason": "auto: nextn head detected",
+        "requested": "auto",
+        "modelMtp": true,
+        "nextnLayers": 1,
+        "fallbackCtx": null,
+        "acceptance": null,
+        "meanLen": null
+      },
+      "vram": {
+        "freeMiB": 6886,
+        "needMiB": 7359
+      },
+      "effective": {
+        "ctx": 16384,
+        "kv": "q4_0",
+        "ngl": 99
+      }
+    },
+    "request": {
+      "status": 200,
+      "wall_s": 2.248,
+      "predicted_per_second": 59.22907436802578,
+      "prompt_per_second": 80.31053406505153,
+      "predicted_n": 121,
+      "content": "The capital of France is **Paris**.",
+      "raw": null
+    },
+    "mtpAfter": {
+      "enabled": true,
+      "reason": "auto: nextn head detected",
+      "requested": "auto",
+      "modelMtp": true,
+      "nextnLayers": 1,
+      "fallbackCtx": null,
+      "acceptance": 0.74775,
+      "meanLen": 3.24
+    },
+    "log": "0.00.164.687 I srv  llama_server: initializing ...\n0.00.164.700 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)\n0.00.165.155 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)\n0.00.177.611 I srv    load_model: loading model 'E:\\model\\bionic\\Qwen\\Qwen3.8-9B-Distill-GGUF\\Qwen3.8-9B-Q5_K_M.gguf'\n0.01.095.973 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort\n0.04.586.559 I cmn          init: llama threadpool init, n_threads = 16\n0.04.847.557 I common_speculative_init_result: creating MTP draft context against the target model 'E:\\model\\bionic\\Qwen\\Qwen3.8-9B-Distill-GGUF\\Qwen3.8-9B-Q5_K_M.gguf'\n0.04.929.371 I srv    load_model: initializing, n_slots = 4, n_ctx_slot = 16384, kv_unified = 'true'\n0.05.011.955 I srv  server_run_i: model loaded\n0.05.012.077 I srv  server_on_li: listening on http://127.0.0.1:18180\n0.05.094.336 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1\n0.05.094.590 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0\n0.07.307.547 I slot print_timing: id  0 | task 0 | prompt eval time =     186.78 ms /    15 tokens (   12.45 ms per token,    80.31 tokens per second)\n0.07.307.556 I slot print_timing: id  0 | task 0 |        eval time =    2026.03 ms /   121 tokens (   16.88 ms per token,    59.23 tokens per second)\n0.07.307.557 I slot print_timing: id  0 | task 0 |       total time =    2212.81 ms /   136 tokens\n0.07.307.558 I slot print_timing: id  0 | task 0 |    graphs reused =         36\n0.07.307.560 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)\n0.07.307.565 I slot print_timing: id  0 | task 0 | draft acceptance = 0.74775 (   83 accepted /   111 generated), mean len =  3.24\n0.07.307.613 I slot      release: id  0 | task 0 | stop processing: n_tokens = 135, truncated = 0\n"
+  },
+  "qwen2k": {
+    "name": "qwen9b 2k q8 MTP",
+    "config": {
+      "ctx": 2048,
+      "kv": "q8_0",
+      "mtp": "auto"
+    },
+    "entry": {
+      "id": "qwen-qwen3.8-9b-distill-gguf-qwen3.8-9b-q5_k_m",
+      "mtp": true,
+      "nextn": 1,
+      "sizeBytes": 6642543936
+    },
+    "start": {
+      "pid": 31856,
+      "port": 18180,
+      "mtp": {
+        "enabled": true,
+        "reason": "auto: nextn head detected",
+        "requested": "auto",
+        "modelMtp": true,
+        "nextnLayers": 1,
+        "fallbackCtx": null,
+        "acceptance": null,
+        "meanLen": null
+      },
+      "vram": {
+        "freeMiB": 7216,
+        "needMiB": 7359
+      },
+      "effective": {
+        "ctx": 2048,
+        "kv": "q8_0",
+        "ngl": 99
+      }
+    },
+    "request": {
+      "status": 200,
+      "wall_s": 1.642,
+      "predicted_per_second": 87.57744915163657,
+      "prompt_per_second": 82.36915659474924,
+      "predicted_n": 128,
+      "content": "",
+      "raw": null
+    },
+    "mtpAfter": {
+      "enabled": true,
+      "reason": "auto: nextn head detected",
+      "requested": "auto",
+      "modelMtp": true,
+      "nextnLayers": 1,
+      "fallbackCtx": null,
+      "acceptance": 0.81818,
+      "meanLen": 3.43
+    },
+    "log": "0.00.158.849 I srv  llama_server: initializing ...\n0.00.158.862 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)\n0.00.159.296 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)\n0.00.171.430 I srv    load_model: loading model 'E:\\model\\bionic\\Qwen\\Qwen3.8-9B-Distill-GGUF\\Qwen3.8-9B-Q5_K_M.gguf'\n0.01.067.193 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort\n0.04.474.485 I cmn          init: llama threadpool init, n_threads = 16\n0.04.650.974 I common_speculative_init_result: creating MTP draft context against the target model 'E:\\model\\bionic\\Qwen\\Qwen3.8-9B-Distill-GGUF\\Qwen3.8-9B-Q5_K_M.gguf'\n0.04.664.573 I srv    load_model: initializing, n_slots = 4, n_ctx_slot = 2048, kv_unified = 'true'\n0.04.722.498 I srv  server_run_i: model loaded\n0.04.722.597 I srv  server_on_li: listening on http://127.0.0.1:18180\n0.05.075.347 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1\n0.05.075.815 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0\n0.06.708.127 I slot print_timing: id  0 | task 0 | prompt eval time =     182.11 ms /    15 tokens (   12.14 ms per token,    82.37 tokens per second)\n0.06.708.134 I slot print_timing: id  0 | task 0 |        eval time =    1450.14 ms /   128 tokens (   11.42 ms per token,    87.58 tokens per second)\n0.06.708.135 I slot print_timing: id  0 | task 0 |       total time =    1632.25 ms /   143 tokens\n0.06.708.136 I slot print_timing: id  0 | task 0 |    graphs reused =         35\n0.06.708.137 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)\n0.06.708.142 I slot print_timing: id  0 | task 0 | draft acceptance = 0.81818 (   90 accepted /   110 generated), mean len =  3.43\n0.06.708.196 I slot      release: id  0 | task 0 | stop processing: n_tokens = 142, truncated = 0\n"
+  },
+  "dsr1": {
+    "name": "dsr1-8b (no MTP head)",
+    "config": {
+      "ctx": 8192,
+      "kv": "q4_0",
+      "mtp": "auto"
+    },
+    "entry": {
+      "id": "lmstudio-community-deepseek-r1-0528-qwen3-8b-gguf-deepseek-r1-0528-qwen3-8b-q4_k_m",
+      "mtp": false,
+      "nextn": 0,
+      "sizeBytes": 5027782720
+    },
+    "start": {
+      "pid": 35380,
+      "port": 18180,
+      "mtp": {
+        "enabled": false,
+        "reason": "auto: no nextn head",
+        "requested": "auto",
+        "modelMtp": false,
+        "nextnLayers": 0,
+        "fallbackCtx": null,
+        "acceptance": null,
+        "meanLen": null
+      },
+      "vram": {
+        "freeMiB": 7216,
+        "needMiB": 5819
+      },
+      "effective": {
+        "ctx": 8192,
+        "kv": "q4_0",
+        "ngl": 99
+      }
+    },
+    "request": {
+      "status": 200,
+      "wall_s": 0.64,
+      "predicted_per_second": 54.439927296355165,
+      "prompt_per_second": 130.52274358807023,
+      "predicted_n": 32,
+      "content": "",
+      "raw": null
+    },
+    "mtpAfter": {
+      "enabled": false,
+      "reason": "auto: no nextn head",
+      "requested": "auto",
+      "modelMtp": false,
+      "nextnLayers": 0,
+      "fallbackCtx": null,
+      "acceptance": null,
+      "meanLen": null
+    },
+    "log": "0.00.169.354 I srv  llama_server: initializing ...\n0.00.169.376 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)\n0.00.169.987 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)\n0.00.178.532 I srv    load_model: loading model 'E:\\model\\bionic\\lmstudio-community\\DeepSeek-R1-0528-Qwen3-8B-GGUF\\DeepSeek-R1-0528-Qwen3-8B-Q4_K_M.gguf'\n0.00.624.138 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden\n0.02.937.999 I cmn          init: llama threadpool init, n_threads = 16\n0.03.065.829 I srv    load_model: initializing, n_slots = 4, n_ctx_slot = 8192, kv_unified = 'true'\n0.03.087.482 I srv  server_run_i: model loaded\n0.03.087.491 I srv  server_on_li: listening on http://127.0.0.1:18180\n0.03.534.577 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1\n0.03.534.608 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0\n0.04.165.396 I slot print_timing: id  0 | task 0 | prompt eval time =      61.29 ms /     8 tokens (    7.66 ms per token,   130.52 tokens per second)\n0.04.165.405 I slot print_timing: id  0 | task 0 |        eval time =     569.43 ms /    32 tokens (   18.37 ms per token,    54.44 tokens per second)\n0.04.165.406 I slot print_timing: id  0 | task 0 |       total time =     630.73 ms /    40 tokens\n0.04.165.410 I slot print_timing: id  0 | task 0 |    graphs reused =         31\n0.04.165.411 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)\n0.04.165.436 I slot      release: id  0 | task 0 | stop processing: n_tokens = 39, truncated = 0\n"
+  }
+}

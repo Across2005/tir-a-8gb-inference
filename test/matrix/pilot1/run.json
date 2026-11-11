@@ -1,0 +1,37 @@
+{
+  "schema": "tir.matrix-run/v1",
+  "run_id": "pilot1",
+  "started_at": "2026-11-11T13:11:18+08:00",
+  "build": {
+    "build_id": "20261111-1311",
+    "dll_sha": "286cb71b14f0d5ce",
+    "exe_sha": {
+      "tir-bench.exe": "8d30b5e40ca3ff10",
+      "tir-bench-ceiling.exe": "d4b651fa2359bdd5",
+      "tir-test-profile.exe": "963a72b666e50e89",
+      "tir-test-prefill.exe": "0ea41cfb8ce0155b",
+      "tir-test-mtp.exe": "81cefc4e77f1da61"
+    },
+    "git_head": "727fa5c43d0cdc61c3ff0ef0862d1201f976e213",
+    "dirty": 46
+  },
+  "models": [
+    "minicpm5-1b"
+  ],
+  "excluded": [
+    "mmproj-bonsai-27b",
+    "mmproj-gemma4-12b",
+    "mmproj-gemma4-26b",
+    "mmproj-glm4.6v"
+  ],
+  "args": {
+    "dry_run": false,
+    "models": "minicpm5-1b",
+    "only": "",
+    "resume": "",
+    "run_id": "pilot1",
+    "max_wall_hours": 4.0,
+    "skip_gpu": false,
+    "cooldown": 30.0
+  }
+}

@@ -1,0 +1,35 @@
+{
+ "schema": "tir.plan/v1",
+ "model": "E:\\model\\bionic\\Qwen\\Qwen3.8-9B-Distill-GGUF\\Qwen3.8-9B-Q5_K_M.gguf",
+ "arch": "qwen35",
+ "ctx": 16384,
+ "kv_type": "q4_0",
+ "compute_mib": 512,
+ "reserve_mib": 815,
+ "tiers": {
+  "t0_mib": 5286,
+  "t1_mib": 1039,
+  "t2_mib": 0
+ },
+ "resident": [],
+ "stream_host": [
+  "blk.26.*",
+  "blk.27.*",
+  "blk.28.*",
+  "blk.29.*",
+  "blk.30.*",
+  "blk.31.*",
+  "blk.32.*"
+ ],
+ "stream_disk": [],
+ "expected_tok_s": [
+  57.2,
+  80.0
+ ],
+ "warnings": [
+  "MTP enabled: expected_tok_s x2, bytes/token /3.2"
+ ],
+ "why": "spill 7 FFN layers (0.32 GiB/token (MTP /3.2) <= 0.6 GiB budget)",
+ "feasible": true,
+ "backend": "host"
+}

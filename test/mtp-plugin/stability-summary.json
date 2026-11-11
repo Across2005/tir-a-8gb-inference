@@ -1,0 +1,32 @@
+{
+  "startedAt": "2026-11-09T01:56:59.208Z",
+  "finishedAt": "2026-11-09T02:27:02.036Z",
+  "duration_min": 30,
+  "interval_ms": 10000,
+  "samples": 151,
+  "skipped_contention": 0,
+  "errors": 0,
+  "restarts": 0,
+  "tok_s": {
+    "avg": 42.78,
+    "min": 37.09,
+    "max": 51.5
+  },
+  "acceptance": {
+    "avg": 0.865,
+    "min": 0.86538,
+    "max": 0.86538
+  },
+  "free_vram_mib": {
+    "min": 133,
+    "max": 230
+  },
+  "temp_c": {
+    "min": 47,
+    "max": 51
+  },
+  "power_w": {
+    "min": 16.86,
+    "max": 20.7
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "tir.matrix-run/v1",
+  "run_id": "full1",
+  "started_at": "2026-11-11T15:12:15+08:00",
+  "build": {
+    "build_id": "20261111-1512",
+    "dll_sha": "286cb71b14f0d5ce",
+    "exe_sha": {
+      "tir-bench.exe": "8d30b5e40ca3ff10",
+      "tir-bench-ceiling.exe": "d4b651fa2359bdd5",
+      "tir-test-profile.exe": "963a72b666e50e89",
+      "tir-test-prefill.exe": "0ea41cfb8ce0155b",
+      "tir-test-mtp.exe": "81cefc4e77f1da61"
+    },
+    "git_head": "727fa5c43d0cdc61c3ff0ef0862d1201f976e213",
+    "dirty": 48
+  },
+  "models": [
+    "qwen35-0.8b-q4km",
+    "qwen3-0.6b-q8",
+    "minicpm5-1b",
+    "qwen35-4.2b-q3km",
+    "nemotron-4b-q4_0",
+    "qwen35-4.2b-iq4xs",
+    "qwen35-4.2b-q4_0",
+    "qwen35-opus-4b",
+    "nemotron-nano-4b-q4km",
+    "bonsai-27b-q1_0",
+    "dsr1-8b-q4km",
+    "qwen9b-q4_0",
+    "q3.5-9b",
+    "qwythos9b",
+    "qwen9b-q4km",
+    "glm4.6v-q4km",
+    "qwen9b-q5km",
+    "gemma4-12b-q4_0",
+    "spark-x2.5-4b",
+    "gemma4-26b-a4b"
+  ],
+  "excluded": [
+    "mmproj-bonsai-27b",
+    "mmproj-gemma4-12b",
+    "mmproj-gemma4-26b",
+    "mmproj-glm4.6v"
+  ],
+  "args": {
+    "dry_run": false,
+    "models": "",
+    "only": "",
+    "resume": "",
+    "run_id": "full1",
+    "max_wall_hours": 2.0,
+    "skip_gpu": false,
+    "cooldown": 40.0
+  }
+}

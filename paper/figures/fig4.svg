@@ -1,64 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520">
 <rect width="980" height="520" fill="#ffffff"/>
-<text x="40" y="42" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2328">图 6 20 模型在 128 token 下的 decode 速率</text>
-<text x="40" y="68" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#8a8f98">ctx 16384（放不下时用实测可行档），q4 KV，greedy，同一台机器</text>
-<text x="40" y="111" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">minicpm5-1b</text>
-<rect x="250" y="100" width="625.0" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="881.0" y="111" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">313.9</text>
-<text x="40" y="131" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen35-0.8b-q4km</text>
-<rect x="250" y="120" width="546.8102899012424" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="802.8102899012424" y="131" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">274.6</text>
-<text x="40" y="151" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen3-0.6b-q8</text>
-<rect x="250" y="140" width="485.06690028671557" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="741.0669002867155" y="151" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">243.6</text>
-<text x="40" y="171" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">nemotron-4b-q4_0</text>
-<rect x="250" y="160" width="231.20420516087927" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="487.20420516087927" y="171" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">116.1</text>
-<text x="40" y="191" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">nemotron-nano-4b-q4km</text>
-<rect x="250" y="180" width="202.7715833067856" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="458.7715833067856" y="191" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">101.8</text>
-<text x="40" y="211" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen35-4.2b-iq4xs</text>
-<rect x="250" y="200" width="193.21439949028354" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="449.21439949028354" y="211" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">97.0</text>
-<text x="40" y="231" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen35-4.2b-q4_0</text>
-<rect x="250" y="220" width="192.557343102899" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="448.55734310289904" y="231" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">96.7</text>
-<text x="40" y="251" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen35-4.2b-q3km</text>
-<rect x="250" y="240" width="171.63109270468303" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="427.63109270468306" y="251" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">86.2</text>
-<text x="40" y="271" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen35-opus-4b</text>
-<rect x="250" y="260" width="168.96304555590953" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="424.9630455559095" y="271" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">84.9</text>
-<text x="40" y="291" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">dsr1-8b-q4km</text>
-<rect x="250" y="280" width="117.47371774450463" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="373.4737177445046" y="291" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">59.0</text>
-<text x="40" y="311" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen9b-q4_0</text>
-<rect x="250" y="300" width="113.1729850270787" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="369.1729850270787" y="311" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">56.8</text>
-<text x="40" y="331" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen9b-q4km</text>
-<rect x="250" y="320" width="105.52723797387704" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="361.52723797387705" y="331" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">53.0</text>
-<text x="40" y="351" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">q3.5-9b</text>
-<rect x="250" y="340" width="105.3082191780822" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="361.3082191780822" y="351" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">52.9</text>
-<text x="40" y="371" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwythos9b</text>
-<rect x="250" y="360" width="105.00955718381651" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="361.0095571838165" y="371" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">52.7</text>
-<text x="40" y="391" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">qwen9b-q5km</text>
-<rect x="250" y="380" width="93.95906339598599" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="349.959063395986" y="391" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">47.2</text>
-<text x="40" y="411" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">bonsai-27b-q1_0</text>
-<rect x="250" y="400" width="91.82860783689074" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="347.82860783689074" y="411" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">46.1</text>
-<text x="40" y="431" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">glm4.6v-q4km</text>
-<rect x="250" y="420" width="89.51895508123607" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="345.5189550812361" y="431" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">45.0</text>
-<text x="40" y="451" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">gemma4-12b-q4_0</text>
-<rect x="250" y="440" width="20.05017521503664" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="276.05017521503663" y="451" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">10.1</text>
-<text x="40" y="471" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">spark-x2.5-4b</text>
-<rect x="250" y="460" width="8.362535839439312" height="14" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
-<text x="264.3625358394393" y="471" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#1f2328" text-anchor="start" font-weight="400">4.2</text>
+<text x="40" y="42" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2328">图 4 128 token 的时间分解：plain 与 MTP</text>
+<text x="40" y="68" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#8a8f98">同一模型 qwen9b-Q4_K_M；prefill 不计入（由 TTFT 单独计）</text>
+<text x="40" y="184" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#1f2328" text-anchor="start" font-weight="700">plain  总计 2304 ms</text>
+<rect x="150" y="150" width="678.8700913162737" height="46" rx="0" fill="#2f6f9f" stroke="#ffffff" stroke-width="1"/>
+<text x="156" y="178" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#ffffff" text-anchor="start" font-weight="400">GPU decode (eval) 2235</text>
+<rect x="828.8700913162737" y="150" width="7.750164924828998" height="46" rx="0" fill="#6b9bc3" stroke="#ffffff" stroke-width="1"/>
+<rect x="836.6202562411028" y="150" width="1" height="46" rx="0" fill="#9dbdd8" stroke="#ffffff" stroke-width="1"/>
+<rect x="836.7995034894622" y="150" width="1" height="46" rx="0" fill="#c9dbe9" stroke="#ffffff" stroke-width="1"/>
+<rect x="836.8116558452831" y="150" width="13.188344154716846" height="46" rx="0" fill="#c26a2b" stroke="#ffffff" stroke-width="1"/>
+<text x="40" y="314" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#1f2328" text-anchor="start" font-weight="700">MTP  总计 1586 ms</text>
+<rect x="150" y="280" width="550.2729725640509" height="46" rx="0" fill="#2f6f9f" stroke="#ffffff" stroke-width="1"/>
+<text x="156" y="308" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#ffffff" text-anchor="start" font-weight="400">GPU verify (prompt_eval) 1247</text>
+<rect x="700.2729725640509" y="280" width="9.562865644543072" height="46" rx="0" fill="#6b9bc3" stroke="#ffffff" stroke-width="1"/>
+<rect x="709.8358382085939" y="280" width="1" height="46" rx="0" fill="#9dbdd8" stroke="#ffffff" stroke-width="1"/>
+<rect x="709.9682267500505" y="280" width="1" height="46" rx="0" fill="#c9dbe9" stroke="#ffffff" stroke-width="1"/>
+<rect x="709.9814656041962" y="280" width="140.01853439580393" height="46" rx="0" fill="#c26a2b" stroke="#ffffff" stroke-width="1"/>
+<text x="715.9814656041962" y="308" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#ffffff" text-anchor="start" font-weight="400">host 残差 317</text>
+<text x="40" y="390" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">MTP 的 verify 批记在 prompt_eval_ms，plain 的 decode 记在 eval_ms；</text>
+<text x="40" y="408" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">两者用同一加法式，只是归属相反。旧版漏减 prompt_eval，才得出 91%。</text>
 <line x1="40" y1="474" x2="940" y2="474" stroke="#8a8f98" stroke-width="1"/>
-<text x="40" y="496" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">数据：test/matrix/full1/master.csv（rate_plain 行）</text>
+<text x="40" y="496" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">数据：build/logs/d1-clean-mtp0.raw、d1-clean-mtp1.raw（最后一轮）</text>
 </svg>

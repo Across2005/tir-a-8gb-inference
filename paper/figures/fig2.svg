@@ -1,49 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
-<rect width="1000" height="520" fill="#ffffff"/>
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5b6572"/></marker></defs>
-<line x1="300.0" y1="92" x2="300.0" y2="426" stroke="#d7dce2" stroke-width="1"/>
-<text x="300.0" y="446" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">0</text>
-<line x1="445.0" y1="92" x2="445.0" y2="426" stroke="#d7dce2" stroke-width="1"/>
-<text x="445.0" y="446" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">100</text>
-<line x1="590.0" y1="92" x2="590.0" y2="426" stroke="#d7dce2" stroke-width="1"/>
-<text x="590.0" y="446" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">200</text>
-<line x1="735.0" y1="92" x2="735.0" y2="426" stroke="#d7dce2" stroke-width="1"/>
-<text x="735.0" y="446" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">300</text>
-<line x1="880.0" y1="92" x2="880.0" y2="426" stroke="#d7dce2" stroke-width="1"/>
-<text x="880.0" y="446" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">400</text>
-<text x="286" y="131.66666666666669" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">1B minicpm</text>
-<rect x="300" y="106.66666666666667" width="487.2" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
-<rect x="300" y="128.66666666666669" width="487.983" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
-<text x="793.2" y="120.66666666666667" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">336</text>
-<text x="793.983" y="142.66666666666669" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">336.54</text>
-<text x="286" y="185.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">4B qwen3.5</text>
-<rect x="300" y="160.0" width="133.603" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
-<rect x="300" y="182.0" width="135.0965" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
-<text x="439.603" y="174.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">92.14</text>
-<text x="441.0965" y="196.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">93.17</text>
-<text x="286" y="238.33333333333334" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">Nemotron 4B</text>
-<rect x="300" y="213.33333333333334" width="161.0225" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
-<rect x="300" y="235.33333333333334" width="158.70250000000001" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
-<text x="467.02250000000004" y="227.33333333333334" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">111.05</text>
-<text x="464.7025" y="249.33333333333334" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">109.45</text>
-<text x="286" y="291.6666666666667" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">8B DSR1</text>
-<rect x="300" y="266.6666666666667" width="92.8" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
-<rect x="300" y="288.6666666666667" width="93.525" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
-<text x="398.8" y="280.6666666666667" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">64</text>
-<text x="399.525" y="302.6666666666667" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">64.5</text>
-<text x="286" y="345.00000000000006" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">9B plain</text>
-<rect x="300" y="320.00000000000006" width="73.71800000000002" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
-<rect x="300" y="342.00000000000006" width="75.1245" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
-<text x="379.718" y="334.00000000000006" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">50.84</text>
-<text x="381.1245" y="356.00000000000006" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">51.81</text>
-<text x="286" y="398.33333333333337" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">9B + MTP w1</text>
-<rect x="300" y="373.33333333333337" width="108.46" height="18" rx="3" fill="#2f6f9f" stroke="none"/>
-<rect x="300" y="395.33333333333337" width="75.1245" height="18" rx="3" fill="#aeb6bf" stroke="none"/>
-<text x="414.46" y="387.33333333333337" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#2f6f9f">74.8</text>
-<text x="381.1245" y="409.33333333333337" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">51.81</text>
-<rect x="640" y="70" width="14" height="14" rx="3" fill="#2f6f9f" stroke="none"/>
-<text x="660" y="82" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1f2328">TIR-A</text>
-<rect x="790" y="70" width="14" height="14" rx="3" fill="#aeb6bf" stroke="none"/>
-<text x="810" y="82" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#1f2328">llama.cpp</text>
-<text x="40" y="486" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6572">数据：docs/reports/2026-11-09-tir-a-speed-history.md §3.2；1B 为 329–343 的中值 336，8B 为 63.7–64.3 的中值 64.0；128 gen token。</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520">
+<rect width="980" height="520" fill="#ffffff"/>
+<text x="40" y="42" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2328">图 2 开发参考的开源项目：三类关系</text>
+<text x="40" y="68" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#8a8f98">本地 9 个项目；8 个为无 .git 的快照，版本依据 repos.json</text>
+<rect x="40" y="96" width="270" height="30" rx="4" fill="#3d7a4a" stroke="#3d7a4a" stroke-width="1"/>
+<text x="175" y="116" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="700">代码基座</text>
+<rect x="40" y="138" width="270" height="54" rx="4" fill="#ffffff" stroke="#3d7a4a" stroke-width="1"/>
+<text x="50" y="156" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="700">diskinfer-windows</text>
+<text x="50" y="172" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">fork 的直接上游</text>
+<text x="50" y="186" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">llama.cpp 0.7.0 / ggml 0.27.0</text>
+<rect x="40" y="200" width="270" height="54" rx="4" fill="#ffffff" stroke="#3d7a4a" stroke-width="1"/>
+<text x="50" y="218" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="700">llama.cpp</text>
+<text x="50" y="234" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">经 diskinfer 间接继承</text>
+<text x="50" y="248" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">只加 ABI、tier、residency</text>
+<rect x="355" y="96" width="270" height="30" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
+<text x="490" y="116" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="700">借策略，不搬代码</text>
+<rect x="355" y="138" width="270" height="44" rx="4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1"/>
+<text x="365" y="156" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="700">Swiftlet</text>
+<text x="365" y="172" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">qpack 固定 stride；Metal 不可编译</text>
+<rect x="355" y="190" width="270" height="44" rx="4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1"/>
+<text x="365" y="208" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="700">KTransformers</text>
+<text x="365" y="224" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">专家分桶；pinned 双缓冲</text>
+<rect x="355" y="242" width="270" height="44" rx="4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1"/>
+<text x="365" y="260" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="700">FlexLLMGen</text>
+<text x="365" y="276" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">Tgen/Tpre 代价式</text>
+<rect x="355" y="294" width="270" height="44" rx="4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1"/>
+<text x="365" y="312" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="700">AirLLM</text>
+<text x="365" y="328" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">super-block 落盘</text>
+<rect x="355" y="346" width="270" height="44" rx="4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1"/>
+<text x="365" y="364" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="700">PowerInfer/smallthinker</text>
+<text x="365" y="380" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">ExpertCache LRU；稀疏不适用</text>
+<rect x="355" y="398" width="270" height="44" rx="4" fill="#ffffff" stroke="#2f6f9f" stroke-width="1"/>
+<text x="365" y="416" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="700">Strata</text>
+<text x="365" y="432" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">会话前缀 checkpoint</text>
+<rect x="670" y="96" width="270" height="30" rx="4" fill="#c26a2b" stroke="#c26a2b" stroke-width="1"/>
+<text x="805" y="116" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="700">反面证据</text>
+<rect x="670" y="138" width="270" height="44" rx="4" fill="#ffffff" stroke="#c26a2b" stroke-width="1"/>
+<text x="680" y="156" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="700">RabbitLLM</text>
+<text x="680" y="172" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">逐层 pin 仅 0.7 GB/s</text>
+<rect x="670" y="190" width="270" height="44" rx="4" fill="#ffffff" stroke="#c26a2b" stroke-width="1"/>
+<text x="680" y="208" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="700">airllm-plus</text>
+<text x="680" y="224" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="start" font-weight="400">compute 是 time.sleep</text>
+<line x1="40" y1="474" x2="940" y2="474" stroke="#8a8f98" stroke-width="1"/>
+<text x="40" y="496" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">来源：docs/reports/2026-11-09-tir-a2-integrated-decision.md §2/§5；low-vram-research/docs/</text>
 </svg>

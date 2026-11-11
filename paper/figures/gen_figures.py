@@ -1,410 +1,352 @@
 #!/usr/bin/env python3
-"""Generate the 8 SVG figures for the TIR-A technical paper.
+"""Generate the eight SVG figures for the final report.
 
-Data sources:
-  fig1  docs/reports/2026-11-09-hardware-ceiling-probe.md section 2
-  fig2  docs/reports/2026-11-09-tir-a-speed-history.md section 3.2
-  fig3  build/logs/a4-full-{1b,4b,nemotron,8b,9b}.raw  default_batch lines
-  fig4  docs/reports/2026-11-09-tir-a-speed-history.md section 4
-  fig5  test/power/results.jsonl, hardware-ceiling-probe.md 2.5, tp1-gpu-load-2026-11-10.txt
-  fig6  src/tir-api + CMakeLists + build-tir-api.bat
-  fig7  build/run-p0-gate.bat + blueprints
-  fig8  docs/reports 2026-11-09-* failure reports
-
-Only stdlib is used. Run: python gen_figures.py
+Only the standard library is used: each figure is hand-written SVG so the build
+has no matplotlib dependency. Data for figs 4-6 is read from the matrix run when
+present; the script degrades to a placeholder otherwise.
 """
-import html
-import os
+import csv
+import json
+import math
+from pathlib import Path
 
-OUT = os.path.dirname(os.path.abspath(__file__))
+OUT = Path(__file__).resolve().parent
+MATRIX_CSV = Path(r"E:\Deepseek\tir-b\test\matrix\full1\master.csv")
 FONT = "Microsoft YaHei, Segoe UI, sans-serif"
 INK = "#1f2328"
-MUTED = "#5b6572"
-GRID = "#d7dce2"
 BLUE = "#2f6f9f"
-BLUE2 = "#7fa8c4"
-GRAY = "#aeb6bf"
-ORANGE = "#d9822b"
-GREEN = "#3a7d44"
-RED = "#b03a2e"
-AMBER = "#b8860b"
+ORANGE = "#c26a2b"
+GREEN = "#3d7a4a"
+GRAY = "#8a8f98"
+LIGHT = "#e8edf2"
+W, H = 980, 520
 
 
 def esc(s):
-    return html.escape(str(s), quote=True)
+    return (str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
 
-def head(w, h, title):
-    return [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">',
-        f'<rect width="{w}" height="{h}" fill="#ffffff"/>',
-        '<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5b6572"/></marker></defs>',
+def head(title, sub=""):
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
+        f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
+        f'<text x="40" y="42" font-family="{FONT}" font-size="22" font-weight="700" fill="{INK}">{esc(title)}</text>',
     ]
+    if sub:
+        parts.append(f'<text x="40" y="68" font-family="{FONT}" font-size="13" fill="{GRAY}">{esc(sub)}</text>')
+    return parts
 
 
-def text(x, y, s, size=14, anchor="start", weight="normal", fill=INK):
-    return (f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="{size}" '
-            f'text-anchor="{anchor}" font-weight="{weight}" fill="{fill}">{esc(s)}</text>')
+def text(x, y, s, size=13, fill=INK, anchor="start", weight="400"):
+    return (f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="{size}" fill="{fill}" '
+            f'text-anchor="{anchor}" font-weight="{weight}">{esc(s)}</text>')
 
 
-def line(x1, y1, x2, y2, color=GRID, width=1, dash=None):
+def rect(x, y, w, h, fill=LIGHT, stroke=INK, rx=4, sw=1):
+    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" fill="{fill}" '
+            f'stroke="{stroke}" stroke-width="{sw}"/>')
+
+
+def line(x1, y1, x2, y2, stroke=GRAY, sw=1, dash=None):
     d = f' stroke-dasharray="{dash}"' if dash else ""
-    return (f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" '
-            f'stroke="{color}" stroke-width="{width}"{d}/>')
+    return f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{stroke}" stroke-width="{sw}"{d}/>'
 
 
-def rect(x, y, w, h, fill, stroke="none", rx=3):
-    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" fill="{fill}" stroke="{stroke}"/>'
+def footer(parts, note):
+    parts.append(line(40, H - 46, W - 40, H - 46, GRAY, 1))
+    parts.append(text(40, H - 24, note, 11, GRAY))
+    parts.append("</svg>")
+    return "\n".join(parts)
 
 
-def arrow(x1, y1, x2, y2, color=MUTED):
-    return (f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" '
-            f'stroke-width="1.6" marker-end="url(#a)"/>')
+def save(name, parts):
+    body = parts if isinstance(parts, str) else "\n".join(parts)
+    (OUT / f"{name}.svg").write_text(body, encoding="utf-8")
 
 
-def footer(items):
-    y = 0
-    return y, items
+def hbar(title, sub, rows, note, unit="GB/s", color=BLUE):
+    """rows: (label, value, annotation)."""
+    parts = head(title, sub)
+    vmax = max(r[1] for r in rows) * 1.15
+    top, bar_h, gap = 110, 30, 22
+    for i, (label, val, ann) in enumerate(rows):
+        y = top + i * (bar_h + gap)
+        w = 620 * val / vmax
+        parts.append(text(40, y + 20, label, 14))
+        parts.append(rect(250, y, max(w, 2), bar_h, color, color))
+        parts.append(text(258 + w, y + 20, f"{val:g} {unit}  {ann}", 12, INK))
+    return footer(parts, note)
 
 
-def save(name, lines):
-    path = os.path.join(OUT, name)
-    with open(path, "w", encoding="utf-8", newline="\n") as f:
-        f.write("\n".join(lines + ["</svg>"]) + "\n")
-    return path
+# ---------------------------------------------------------------- fig 1
 
-
-def hbar_log(name, title, items, note):
-    """Horizontal bars on a log10 x axis. items: (label, value, color)."""
-    w, h = 1000, 460
-    x0, x1 = 300, 900
-    top, bottom = 96, h - 96
-    lo, hi = 1.0, 1000.0
-    import math
-
-    def px(v):
-        t = (math.log10(v) - math.log10(lo)) / (math.log10(hi) - math.log10(lo))
-        return x0 + t * (x1 - x0)
-
-    out = head(w, h, title)
-    out.append(text(40, 74, "对数轴，单位 GB/s；数值为实测有效带宽", 13, fill=MUTED))
-    for tick in (1, 10, 100, 1000):
-        x = px(tick)
-        out.append(line(x, top - 8, x, bottom + 8, GRID, 1))
-        out.append(text(x, bottom + 28, f"{tick}", 12, anchor="middle", fill=MUTED))
-    n = len(items)
-    step = (bottom - top) / n
-    bh = min(34, step * 0.62)
-    for i, (label, value, color) in enumerate(items):
-        y = top + i * step + (step - bh) / 2
-        out.append(text(x0 - 14, y + bh / 2 + 5, label, 14, anchor="end"))
-        x = px(value)
-        out.append(rect(x0, y, max(2, x - x0), bh, color))
-        out.append(text(x + 8, y + bh / 2 + 5, f"{value:g}", 13, weight="bold"))
-    out.append(text(40, h - 34, note, 12, fill=MUTED))
-    return save(name, out)
-
-
-def nice_max(v):
-    import math
-    raw = v * 1.05
-    mag = 10 ** int(math.floor(math.log10(raw)))
-    for m in (1, 2, 2.5, 3, 4, 5, 6, 8, 10):
-        if raw <= m * mag:
-            return m * mag
-    return 10 * mag
-
-
-def grouped_hbar(name, title, groups, legend, note):
-    """groups: (label, a_value, b_value)."""
-    w, h = 1000, 520
-    x0, x1 = 300, 880
-    top, bottom = 100, h - 100
-    maxv = nice_max(max(max(a, b) for _, a, b in groups))
-    out = head(w, h, title)
-    for k in range(0, 5):
-        v = maxv * k / 4
-        x = x0 + (v / maxv) * (x1 - x0)
-        out.append(line(x, top - 8, x, bottom + 6, GRID, 1))
-        out.append(text(x, bottom + 26, f"{v:.0f}", 12, anchor="middle", fill=MUTED))
-    n = len(groups)
-    step = (bottom - top) / n
-    bh = min(18, step * 0.34)
-    for i, (label, a, b) in enumerate(groups):
-        y = top + i * step
-        out.append(text(x0 - 14, y + step / 2 + 5, label, 14, anchor="end"))
-        ya = y + step / 2 - bh - 2
-        yb = y + step / 2 + 2
-        wa = (a / maxv) * (x1 - x0)
-        wb = (b / maxv) * (x1 - x0)
-        out.append(rect(x0, ya, wa, bh, BLUE))
-        out.append(rect(x0, yb, wb, bh, GRAY))
-        out.append(text(x0 + wa + 6, ya + bh - 4, f"{a:g}", 11, fill=BLUE))
-        out.append(text(x0 + wb + 6, yb + bh - 4, f"{b:g}", 11, fill=MUTED))
-    lx = 640
-    out.append(rect(lx, 70, 14, 14, BLUE))
-    out.append(text(lx + 20, 82, legend[0], 13))
-    out.append(rect(lx + 150, 70, 14, 14, GRAY))
-    out.append(text(lx + 170, 82, legend[1], 13))
-    out.append(text(40, h - 34, note, 12, fill=MUTED))
-    return save(name, out)
-
-
-def hbar_linear(name, title, items, note, highlight=None, value_fmt="{:.2f}"):
-    """items: (label, value, color, caption)."""
-    w, h = 1000, 480
-    x0, x1 = 360, 860
-    top, bottom = 100, h - 96
-    maxv = nice_max(max(v for _, v, _, _ in items))
-    out = head(w, h, title)
-    n = len(items)
-    step = (bottom - top) / n
-    bh = min(30, step * 0.55)
-    for i, (label, value, color, caption) in enumerate(items):
-        y = top + i * step + (step - bh) / 2
-        out.append(text(x0 - 14, y + bh / 2 + 5, label, 14, anchor="end"))
-        wv = (value / maxv) * (x1 - x0)
-        out.append(rect(x0, y, max(wv, 2), bh, color))
-        out.append(text(x0 + wv + 8, y + bh / 2 + 5, value_fmt.format(value), 13, weight="bold"))
-        if caption:
-            if wv > 260:
-                out.append(text(x0 + 6, y + bh / 2 + 5, caption, 11, fill="#ffffff"))
-            else:
-                out.append(text(x0 + wv + 74, y + bh / 2 + 5, caption, 11, fill=MUTED))
-    out.append(text(40, h - 34, note, 12, fill=MUTED))
-    return save(name, out)
-
-
-def fig1():
-    items = [
-        ("HBM 纯读", 329.7, BLUE),
-        ("HBM 拷贝（读+写）", 306.3, BLUE2),
-        ("CPU 16 线程 memcpy", 33.7, GREEN),
-        ("PCIe pinned H2D（热态）", 26.66, ORANGE),
-        ("NVMe 直接 I/O（4 MiB）", 5.10, RED),
+def fig1_log():
+    """Log-scale horizontal bars, since the range spans two orders of magnitude."""
+    rows = [
+        ("显存 HBM 读", 330, "实测峰值；copy 306"),
+        ("CPU 内存", 33.7, "DDR5 单条"),
+        ("PCIe H2D", 26.7, "热态可固定内存"),
+        ("E 盘顺序读", 5.56, "Gen4 x4 QD1"),
+        ("E 盘写", 4.33, "Gen4 x4 QD1"),
     ]
-    return hbar_log("fig1.svg", "图 1  本机实测有效带宽：显存、内存、PCIe 与 NVMe",
-                    items,
-                    "数据：docs/reports/2026-11-09-hardware-ceiling-probe.md §2.1–§2.4；"
-                    "pageable H2D 约 8.3 GB/s，未画。")
+    parts = head("图 1 本机实测有效带宽：显存、内存、PCIe 与 NVMe",
+                 "对数尺度；显存比 PCIe 快约 12 倍，比 NVMe 快约 59 倍")
+    lo, hi = 1.0, 500.0
+    x0, x1 = 250, 900
+    def sx(v):
+        return x0 + (x1 - x0) * (math.log10(v) - math.log10(lo)) / (math.log10(hi) - math.log10(lo))
+    for tick in (1, 10, 100, 300):
+        x = sx(tick)
+        parts.append(line(x, 96, x, 420, LIGHT, 1))
+        parts.append(text(x, 440, f"{tick}", 11, GRAY, "middle"))
+    for i, (label, val, ann) in enumerate(rows):
+        y = 120 + i * 58
+        parts.append(text(40, y + 22, label, 14))
+        parts.append(rect(x0, y, max(sx(val) - x0, 2), 30, BLUE, BLUE))
+        parts.append(text(sx(val) + 8, y + 20, f"{val:g} GB/s  {ann}", 12))
+    save("fig1", footer(parts, "数据：docs/reports/2026-11-09-hardware-ceiling-probe.md §2"))
 
+
+# ---------------------------------------------------------------- fig 2
 
 def fig2():
-    groups = [
-        ("1B minicpm", 336.0, 336.54),
-        ("4B qwen3.5", 92.14, 93.17),
-        ("Nemotron 4B", 111.05, 109.45),
-        ("8B DSR1", 64.0, 64.50),
-        ("9B plain", 50.84, 51.81),
-        ("9B + MTP w1", 74.8, 51.81),
+    parts = head("图 2 开发参考的开源项目：三类关系",
+                 "本地 9 个项目；8 个为无 .git 的快照，版本依据 repos.json")
+    cols = [
+        (40, "代码基座", GREEN, [
+            ("diskinfer-windows", "fork 的直接上游\nllama.cpp 0.7.0 / ggml 0.27.0"),
+            ("llama.cpp", "经 diskinfer 间接继承\n只加 ABI、tier、residency"),
+        ]),
+        (355, "借策略，不搬代码", BLUE, [
+            ("Swiftlet", "qpack 固定 stride；Metal 不可编译"),
+            ("KTransformers", "专家分桶；pinned 双缓冲"),
+            ("FlexLLMGen", "Tgen/Tpre 代价式"),
+            ("AirLLM", "super-block 落盘"),
+            ("PowerInfer/smallthinker", "ExpertCache LRU；稀疏不适用"),
+            ("Strata", "会话前缀 checkpoint"),
+        ]),
+        (670, "反面证据", ORANGE, [
+            ("RabbitLLM", "逐层 pin 仅 0.7 GB/s"),
+            ("airllm-plus", "compute 是 time.sleep"),
+        ]),
     ]
-    return grouped_hbar("fig2.svg", "图 2  隔离复测：TIR-A 与 llama.cpp 的 decode 吞吐（tok/s）",
-                        groups, ("TIR-A", "llama.cpp"),
-                        "数据：docs/reports/2026-11-09-tir-a-speed-history.md §3.2；"
-                        "1B 为 329–343 的中值 336，8B 为 63.7–64.3 的中值 64.0；128 gen token。")
+    for x, title, color, items in cols:
+        parts.append(rect(x, 96, 270, 30, color, color))
+        parts.append(text(x + 135, 116, title, 14, "#ffffff", "middle", "700"))
+        y = 138
+        for name, desc in items:
+            h = 54 if "\n" in desc else 44
+            parts.append(rect(x, y, 270, h, "#ffffff", color))
+            parts.append(text(x + 10, y + 18, name, 12, INK, weight="700"))
+            for j, ln in enumerate(desc.split("\n")):
+                parts.append(text(x + 10, y + 34 + j * 14, ln, 10, GRAY))
+            y += h + 8
+    return save("fig2", footer(parts, "来源：docs/reports/2026-11-09-tir-a2-integrated-decision.md §2/§5；low-vram-research/docs/"))
 
+
+# ---------------------------------------------------------------- fig 3
 
 def fig3():
-    items = [
-        ("1B", 29.36, BLUE, "1219.7 → 41.5 ms"),
-        ("4.2B qwen3.5", 31.11, BLUE, "4943.6 → 158.9 ms"),
-        ("Nemotron 4B", 30.21, BLUE, "4389.3 → 145.3 ms"),
-        ("8B DSR1", 31.75, BLUE, "7788.2 → 245.3 ms"),
-        ("9B（MTP，默认 2）", 1.91, ORANGE, "9168.6 → 4799.0 ms"),
-    ]
-    return hbar_linear("fig3.svg", "图 3  默认批 512 的 prefill 收益（逐 token / 默认，520 token）",
-                       items,
-                       "数据：build/logs/a4-full-{1b,4b,nemotron,8b,9b}.raw 的 default_batch 行；"
-                       "9B 带 nextn，默认批按策略保持 2，因此只有 1.91×。",
-                       value_fmt="{:.2f}×")
+    stages = [("P0 9B MTP", 56.93), ("A1 缓存", 74.81), ("C2e Q4+w2", 84.24),
+              ("2026-11-11 门禁", 71.08)]
+    parts = head("图 3 9B 的速率演进与口径变化",
+                 "不同阶段测量条件不同，柱高只作趋势；最终门禁值回落到 71 附近")
+    base_y, top_y = 420, 120
+    bw = 120
+    for i, (label, val) in enumerate(stages):
+        x = 90 + i * 220
+        h = (val / 100.0) * (base_y - top_y)
+        parts.append(rect(x, base_y - h, bw, h, BLUE, BLUE))
+        parts.append(text(x + bw / 2, base_y - h - 10, f"{val:.2f}", 13, INK, "middle", "700"))
+        parts.append(text(x + bw / 2, base_y + 22, label, 12, INK, "middle"))
+    parts.append(line(60, base_y, 920, base_y, INK, 1))
+    for v in (0, 25, 50, 75, 100):
+        y = base_y - (v / 100.0) * (base_y - top_y)
+        parts.append(line(60, y, 920, y, LIGHT, 1))
+        parts.append(text(45, y + 4, str(v), 10, GRAY, "end"))
+    parts.append(text(30, 110, "tok/s", 11, GRAY))
+    return save("fig3", footer(parts, "数据：2026-11-09-tir-a-p0-p1-technical-report.md；qwen9b-q4-mtp-w2.md；build/logs/s3b-p0-gate.raw"))
 
+
+# ---------------------------------------------------------------- matrix reader
+
+def load_rows():
+    if not MATRIX_CSV.exists():
+        return []
+    with open(MATRIX_CSV, encoding="utf-8", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def fnum(v):
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def rate_rows(rows, step="rate_plain"):
+    out = []
+    for r in rows:
+        if r.get("step_id") != step or r.get("status") != "ok":
+            continue
+        v = fnum(r.get("tok_s_avg"))
+        if v:
+            out.append((r["model_id"], v))
+    return sorted(out, key=lambda t: t[1], reverse=True)
+
+
+# ---------------------------------------------------------------- fig 4
 
 def fig4():
-    w, h = 760, 340
-    out = head(w, h, "图 4  MTP 上下文缓存：同一 session 重复请求的 TTFT")
-    base_y, bh = 230, 56
-    items = [("cold（首次请求）", 328, GRAY), ("warm（复用缓存）", 204, BLUE)]
-    maxv = 360
-    for i, (label, value, color) in enumerate(items):
-        x = 160 + i * 260
-        wv = value / maxv * 360
-        out.append(rect(x, base_y - wv, 120, wv, color))
-        out.append(text(x + 60, base_y + 26, label, 13, anchor="middle"))
-        out.append(text(x + 60, base_y - wv - 10, f"{value} ms", 14, anchor="middle", weight="bold"))
-    out.append(text(40, h - 34, "数据：docs/reports/2026-11-09-tir-a-speed-history.md §4；"
-                                "收益 328→204 ms（1.61×），decode 速率不变。", 12, fill=MUTED))
-    return save("fig4.svg", out)
+    rows = rate_rows(load_rows())
+    if not rows:
+        parts = head("图 4 20 模型速率全景", "矩阵尚未完成")
+        return save("fig5", footer(parts, "运行 tools/matrix/run_matrix.py 后重跑本脚本"))
+    parts = head("图 6 20 模型在 128 token 下的 decode 速率",
+                 "ctx 16384（放不下时用实测可行档），q4 KV，greedy，同一台机器")
+    vmax = max(v for _, v in rows) * 1.12
+    top, gap = 100, 20
+    for i, (mid, val) in enumerate(rows):
+        y = top + i * gap
+        w = 700 * val / vmax
+        parts.append(text(40, y + 11, mid, 10))
+        parts.append(rect(250, y, max(w, 2), 14, BLUE, BLUE))
+        parts.append(text(256 + w, y + 11, f"{val:.1f}", 10))
+    return save("fig4", footer(parts, "数据：test/matrix/full1/master.csv（rate_plain 行）"))
 
+
+# ---------------------------------------------------------------- fig 5
 
 def fig5():
-    w, h = 1000, 500
-    out = head(w, h, "图 5  功耗与温度：模型负载、基准与空闲")
-    scenarios = [
-        ("4B qwen（C3）", 85.3, 69),
-        ("8B DSR1（C3）", 95.78, 74),
-        ("9B MTP（tir-bench）", 98.24, 64),
-        ("9B（llama-bench）", 104.65, 74),
-        ("空闲（09:55 后）", 18.6, 50),
-    ]
-    # left panel: power
-    lx0, lx1 = 300, 860
-    top, bottom = 110, h - 110
-    pmax = 140
-    out.append(text(lx0, 82, "平均功耗（W）", 14, weight="bold"))
-    n = len(scenarios)
-    step = (bottom - top) / n
-    bh = 24
-    for i, (label, power, temp) in enumerate(scenarios):
-        y = top + i * step + (step - bh) / 2
-        out.append(text(lx0 - 14, y + bh / 2 + 5, label, 13, anchor="end"))
-        wv = power / pmax * (lx1 - lx0)
-        out.append(rect(lx0, y, wv, bh, ORANGE if i < 4 else GRAY))
-        out.append(text(lx0 + wv + 8, y + bh / 2 + 5, f"{power:g} W", 12, weight="bold"))
-        out.append(text(900, y + bh / 2 + 5, f"{temp} °C", 12, fill=RED))
-    # 115 W limit
-    xlim = lx0 + 115 / pmax * (lx1 - lx0)
-    out.append(line(xlim, top - 12, xlim, bottom + 8, RED, 1.6, "6 4"))
-    out.append(text(xlim - 8, top - 18, "上限 115 W", 12, anchor="end", fill=RED))
-    out.append(text(40, h - 40, "数据：test/power/results.jsonl（4B/8B，decode 口径）；"
-                                "hardware-ceiling-probe.md §2.5（llama-bench、tir-bench）；"
-                                "build/logs/tp1-gpu-load-2026-11-10.txt（空闲）。", 11, fill=MUTED))
-    out.append(text(40, h - 20, "温度是同场景采样峰值/观测值，不能当作长期热稳态。", 11, fill=MUTED))
-    return save("fig5.svg", out)
+    rows = load_rows()
+    series = {}
+    for r in rows:
+        if r.get("status") != "ok" or r.get("step_id") not in ("ttft_S", "ttft_M", "ttft_L"):
+            continue
+        pt = fnum(r.get("prompt_tokens_actual"))
+        tf = fnum(r.get("ttft_ms"))
+        if pt and tf:
+            series.setdefault(r["model_id"], []).append((pt, tf))
+    if not series:
+        parts = head("图 5 TTFT 随 prompt 长度", "矩阵尚未完成")
+        return save("fig4", footer(parts, "运行矩阵后重跑本脚本"))
+    parts = head("图 7 TTFT 随 prompt 长度变化", "每个点是该模型在 ceiling harness 下的三次测量中位")
+    pts = [p for v in series.values() for p in v]
+    xmax = max(p[0] for p in pts) * 1.05
+    ymax = max(p[1] for p in pts) * 1.15
+    x0, y0, x1, y1 = 90, 430, 900, 110
+    for mid, vals in series.items():
+        vals.sort()
+        d = " ".join(f"{x0 + (px / xmax) * (x1 - x0):.1f},{y0 - (py / ymax) * (y0 - y1):.1f}"
+                     for px, py in vals)
+        parts.append(f'<polyline points="{d}" fill="none" stroke="{BLUE}" stroke-width="1.4" opacity="0.55"/>')
+    for tick in (0, 2000, 4000, 6000, 8000):
+        if tick <= xmax:
+            x = x0 + (tick / xmax) * (x1 - x0)
+            parts.append(text(x, y0 + 18, str(tick), 10, GRAY, "middle"))
+    for tick in (0, 500, 1000, 1500, 2000, 2500):
+        if tick <= ymax:
+            y = y0 - (tick / ymax) * (y0 - y1)
+            parts.append(line(x0, y, x1, y, LIGHT, 1))
+            parts.append(text(x0 - 8, y + 4, str(tick), 10, GRAY, "end"))
+    parts.append(text((x0 + x1) / 2, y0 + 38, "prompt tokens", 11, GRAY, "middle"))
+    parts.append(text(30, 100, "TTFT ms", 11, GRAY))
+    return save("fig5", footer(parts, "数据：test/matrix/full1/master.csv（ttft_S/M/L 行，prefill_batch=512）"))
 
 
-def box(x, y, w, h, title, lines, fill="#f4f7fa", stroke="#9fb3c8", title_color=INK):
-    out = [rect(x, y, w, h, fill, stroke, 6),
-           text(x + 10, y + 22, title, 14, weight="bold", fill=title_color)]
-    yy = y + 42
-    for ln in lines:
-        out.append(text(x + 10, yy, ln, 11.5, fill=MUTED))
-        yy += 16
-    return out
-
+# ---------------------------------------------------------------- fig 6
 
 def fig6():
-    w, h = 1040, 660
-    out = head(w, h, "图 6  TIR-A 运行路径与模块边界")
-    # hosts
-    hosts = ["Python ctypes", "Node koffi", "C# P/Invoke", "C 测试/bench"]
-    hw = 180
-    for i, name in enumerate(hosts):
-        x = 60 + i * 220
-        out += box(x, 90, hw, 56, name, [], "#eef3f7")
-        out.append(arrow(x + hw / 2, 146, x + hw / 2, 206))
-    # tir.dll
-    out.append(rect(40, 200, 960, 130, "#e8f0f7", "#7fa8c4", 8))
-    out.append(text(56, 224, "tir.dll（C ABI，14 函数，struct_size/version 校验）", 14, weight="bold", fill=BLUE))
-    mods = [
-        ("tir_core", ["引擎/会话生命周期", "load / info / stats"]),
-        ("tir_chat", ["model_meta", "chat_apply(_ex)"]),
-        ("tir_generate", ["plain prefill", "分块 + 采样循环"]),
-        ("tir_mtp", ["common_speculative", "draft context 复用"]),
-    ]
-    mw = 225
-    for i, (name, lines) in enumerate(mods):
-        x = 56 + i * 237
-        out += box(x, 236, mw, 78, name, lines, "#ffffff", "#7fa8c4")
-    out.append(arrow(520, 330, 520, 380))
-    # llama
-    out.append(rect(40, 376, 640, 90, "#f4f7fa", "#9fb3c8", 8))
-    out.append(text(56, 400, "llama.dll（llama.cpp fork，master 727fa5c）", 14, weight="bold"))
-    out.append(text(56, 424, "common：Jinja 模板 / speculative / 采样；llama.h C API", 11.5, fill=MUTED))
-    out.append(text(56, 444, "n_batch=2048, n_ubatch=512, n_rs_seq=1, q4 KV, FA on", 11.5, fill=MUTED))
-    # side: model file
-    out.append(rect(740, 376, 260, 90, "#fff7e8", "#d9822b", 8))
-    out.append(text(756, 400, "GGUF 模型文件（<MODEL_DIR>）", 13, weight="bold"))
-    out.append(text(756, 424, "mmap；LLAMA_DISK_STREAM_MB=0", 11.5, fill=MUTED))
-    out.append(text(756, 444, "1B / 4.2B / 4B / 8B / 9B", 11.5, fill=MUTED))
-    out.append(arrow(740, 421, 684, 421, ORANGE))
-    # ggml
-    out.append(arrow(300, 466, 300, 506))
-    for i, name in enumerate(["ggml-cuda.dll", "ggml-cpu.dll", "ggml-base.dll"]):
-        out += box(60 + i * 250, 502, 220, 56, name, [], "#eef3f7")
-    # runtime + gpu
-    out.append(arrow(300, 558, 300, 596))
-    out.append(rect(60, 592, 690, 52, "#f4f7fa", "#9fb3c8", 8))
-    out.append(text(76, 616, "CUDA 13.5 runtime（cublas64_13 / cudart，arch 120）", 12.5, weight="bold"))
-    out.append(text(76, 636, "RTX 5060 Laptop 8 GiB / HBM 306–330 GB/s / 115 W", 11.5, fill=MUTED))
-    # env box
-    out.append(rect(790, 490, 210, 150, "#f7f4ef", "#b8860b", 8))
-    out.append(text(806, 514, "运行期开关", 13, weight="bold", fill=AMBER))
-    for i, ln in enumerate(["TIR_PREFILL_BATCH", "TIR_MTP_N_MAX", "TIR_SPEC_TYPE", "TIR_DRAFT_MODEL", "LLAMA_DISK_STREAM_MB"]):
-        out.append(text(806, 536 + i * 18, ln, 10.5, fill=MUTED))
-    out.append(text(806, 626, "作用于 tir.dll 与 llama.dll", 10.5, fill=AMBER))
-    return save("fig6.svg", out)
+    rows = load_rows()
+    seen = {}
+    for r in rows:
+        if r.get("step_id") != "profile":
+            continue
+        wb = fnum(r.get("weights_bytes"))
+        if wb:
+            seen[r["model_id"]] = wb / 2**30
+    if not seen:
+        parts = head("图 6 可行性地图", "矩阵尚未完成")
+        return save("fig6", footer(parts, "运行矩阵后重跑本脚本"))
+    parts = head("图 5 权重体积与 8 GiB 显存的关系",
+                 "柱为 GGUF 文件体积；虚线为 8151 MiB 总显存，点线为 6830 MiB 可用")
+    vmax = max(seen.values()) * 1.08
+    top, gap = 100, 22
+    for i, (mid, g) in enumerate(sorted(seen.items(), key=lambda t: t[1])):
+        y = top + i * gap
+        w = 700 * g / vmax
+        color = GREEN if g < 5.0 else (ORANGE if g < 7.5 else "#a33")
+        parts.append(text(40, y + 11, mid, 10))
+        parts.append(rect(250, y, max(w, 2), 14, color, color))
+        parts.append(text(256 + w, y + 11, f"{g:.2f} GiB", 10))
+    for limit, label, dash in ((8151 / 1024, "总显存 8.0 GiB", "6 4"), (6830 / 1024, "可用 6.7 GiB", "2 3")):
+        x = 250 + 700 * limit / vmax
+        parts.append(line(x, top - 6, x, top + len(seen) * gap + 4, INK, 1.2, dash))
+        parts.append(text(x + 4, top - 10, label, 10, INK))
+    return save("fig6", footer(parts, "数据：master.csv profile 行（weights_bytes）与 nvidia-smi memory.total"))
 
+
+# ---------------------------------------------------------------- fig 7
 
 def fig7():
-    w, h = 1040, 760
-    out = head(w, h, "图 7  门禁体系：从构建到五模型矩阵")
-    steps = [
-        ("1  构建", ["build\\build-tir-api.bat", "MSVC + Ninja + CUDA 13.5 (arch 120)", "期望 BUILD_OK"], BLUE),
-        ("2  P0 gate", ["tir-test-abi / abi-load / generate / mtp", "tir-bench 两轮（MTP on/off）→ JSON", "期望 4/4 + P0_GATE_OK"], BLUE),
-        ("3  切片门", ["prefill：parity / gain / profile", "mtp：parity=64；chat / stream / compat 22", "每个切片独立 L2 + 独立验收"], BLUE),
-        ("4  变异测试", ["先证明旧断言会漏（全绿）", "再证明新判据会红（def_err < 0.5·seq_err）", "RED 日志留档，恢复后 GREEN"], ORANGE),
-        ("5  五模型矩阵", ["1B / 4.2B / Nemotron 4B / 8B / 9B", "520-token：cross / det / profile", "9B expect=2，其余 expect=512"], GREEN),
-    ]
-    y = 90
-    for i, (title, lines, color) in enumerate(steps):
-        out.append(rect(70, y, 760, 96, "#f7f9fb", color, 8))
-        out.append(text(90, y + 28, title, 15, weight="bold", fill=color))
-        for j, ln in enumerate(lines):
-            out.append(text(90, y + 52 + j * 18, ln, 11.5, fill=MUTED))
-        if i < len(steps) - 1:
-            out.append(arrow(450, y + 96, 450, y + 120))
-        y += 120
-    # drift note
-    out.append(rect(860, 90, 150, 216, "#fdf2f1", RED, 8))
-    out.append(text(876, 116, "配置漂移", 13, weight="bold", fill=RED))
-    for i, ln in enumerate(["run-p0-gate.bat", "ROOT=tir-b-p0", "与当前 tir-b", "不是同一棵树；", "2026-11-10", "发现，未修"]):
-        out.append(text(876, 140 + i * 22, ln, 10.5, fill=MUTED))
-    out.append(text(70, h - 30, "证据：build/build-tir-api.bat、build/run-p0-gate.bat、docs/blueprints/L2-A*.md；"
-                                "门禁脚本的 ROOT 指向需与实际工作树一致。", 11, fill=MUTED))
-    return save("fig7.svg", out)
+    plain = {"GPU decode (eval)": 2234.53, "sampler": 25.51, "detok": 0.59, "callback": 0.04, "host 残差": 43.41}
+    mtp = {"GPU verify (prompt_eval)": 1246.95, "sampler": 21.67, "detok": 0.30, "callback": 0.03, "host 残差": 317.29}
+    parts = head("图 4 128 token 的时间分解：plain 与 MTP",
+                 "同一模型 qwen9b-Q4_K_M；prefill 不计入（由 TTFT 单独计）")
+    colors = [BLUE, "#6b9bc3", "#9dbdd8", "#c9dbe9", ORANGE]
+    for gi, (label, seg) in enumerate((("plain  总计 2304 ms", plain), ("MTP  总计 1586 ms", mtp))):
+        y = 150 + gi * 130
+        total = sum(seg.values())
+        x = 150
+        parts.append(text(40, y + 34, label, 13, INK, weight="700"))
+        for i, (k, v) in enumerate(seg.items()):
+            w = 700 * v / total
+            parts.append(rect(x, y, max(w, 1), 46, colors[i % len(colors)], "#ffffff", 0))
+            if v / total > 0.08:
+                parts.append(text(x + 6, y + 28, f"{k} {v:.0f}", 10, "#ffffff"))
+            x += w
+    parts.append(text(40, 390, "MTP 的 verify 批记在 prompt_eval_ms，plain 的 decode 记在 eval_ms；", 11, GRAY))
+    parts.append(text(40, 408, "两者用同一加法式，只是归属相反。旧版漏减 prompt_eval，才得出 91%。", 11, GRAY))
+    return save("fig7", footer(parts, "数据：build/logs/d1-clean-mtp0.raw、d1-clean-mtp1.raw（最后一轮）"))
 
+
+# ---------------------------------------------------------------- fig 8
 
 def fig8():
-    w, h = 1080, 700
-    out = head(w, h, "图 8  失败与回退：试过、测过、放弃或保留")
-    out.append(rect(370, 80, 340, 58, "#eef3f7", "#7fa8c4", 8))
-    out.append(text(540, 106, "候选加速/容量路径", 15, anchor="middle", weight="bold", fill=BLUE))
-    out.append(text(540, 126, "判断依据：字节、带宽、parity、功耗", 11, anchor="middle", fill=MUTED))
+    parts = head("图 8 失败与回退：试过、测过、放弃或保留", "每一次放弃都有实测依据，不是没有尝试")
     items = [
-        ("ngram 自投机", ["重复文本有效", "自然文本不划算"], "保留为可选", AMBER),
-        ("draft-simple", ["接受率 0.83", "draft 前向太贵，4B 变慢"], "回退", RED),
-        ("Q3 / 低比特", ["4B、Nemotron 更慢", "字节少不等于更快"], "回退", RED),
-        ("IQ4_XS", ["不改变 4B/8B 的", "100 t/s 结论"], "不采用", RED),
-        ("Q4_0 9B + MTP", ["token 38 parity 失败", "357 vs 1690"], "回退 Q4_K_M", RED),
-        ("MTP width 3", ["76.9 < 84.2 t/s", "4-row verify 更贵"], "回退 width 2", RED),
-        ("E 盘当内存/显存", ["直接 I/O 5.10 GB/s", "30B 约 0.43 t/s"], "只作容量层", AMBER),
-        ("gemma26 专家流式", ["0.803 GB/token", "冷读 5–7 t/s"], "不进热层", AMBER),
-        ("TIR-C 自研运行时", ["IR/调度/热 kernel", "无证据优于 fork"], "废止", RED),
+        ("神经元稀疏 FFN", "依赖 ReLU，Qwen 是 SwiGLU", "不做"),
+        ("外挂 draft 模型", "接受率高但更慢 61.8 vs 90.5", "不做"),
+        ("KV head 分段", "本机 KV 不是瓶颈", "暂缓"),
+        ("Strata 整栈", "本机跑不了其模型包", "只借机制"),
+        ("Rust/Go 重写引擎", "不改变 HBM 与 PCIe 下限", "不做"),
+        ("默认批全局 512", "短 prompt 余量 0.42× 且真实翻转", "限定长 prompt"),
+        ("前缀复用 B 路线", "探针 δ=0，零裁剪已够", "降级为 A"),
     ]
-    cols, bw, bh = 3, 320, 128
-    centers = [40 + c * 350 + bw / 2 for c in range(cols)]
-    out.append(line(540, 138, 540, 170, "#c7ced6", 1.4))
-    out.append(line(centers[0], 170, centers[-1], 170, "#c7ced6", 1.4))
-    for idx, (title, lines, verdict, color) in enumerate(items):
-        r, c = divmod(idx, cols)
-        x = 40 + c * 350
-        y = 200 + r * 160
-        out.append(rect(x, y, bw, bh, "#ffffff", color, 8))
-        out.append(text(x + 14, y + 26, title, 13.5, weight="bold", fill=color))
-        for j, ln in enumerate(lines):
-            out.append(text(x + 14, y + 50 + j * 18, ln, 11, fill=MUTED))
-        out.append(text(x + 14, y + bh - 12, "结论：" + verdict, 11.5, weight="bold", fill=color))
-        if r == 0:
-            out.append(arrow(x + bw / 2, 170, x + bw / 2, y - 4, "#c7ced6"))
-        else:
-            out.append(arrow(x + bw / 2, y - 32, x + bw / 2, y - 4, "#c7ced6"))
-    out.append(text(40, h - 28, "证据：docs/reports/2026-11-09-{ngram-spec,draft-simple,4b-quant-ab,iq4xs-memory,"
-                                "qwen9b-q4-mtp-w2,e-drive-feasibility,gemma26-expert-profile,tir-c-gpu-first-correction}.md；"
-                                "test/power/results.jsonl。", 10.5, fill=MUTED))
-    return save("fig8.svg", out)
+    y = 110
+    for name, why, verdict in items:
+        parts.append(rect(40, y, 460, 46, "#ffffff", GRAY))
+        parts.append(text(54, y + 20, name, 12, INK, weight="700"))
+        parts.append(text(54, y + 36, why, 10, GRAY))
+        color = {"不做": ORANGE, "暂缓": GRAY, "只借机制": BLUE, "限定长 prompt": BLUE,
+                 "降级为 A": GREEN}.get(verdict, BLUE)
+        parts.append(rect(520, y + 6, 120, 32, color, color))
+        parts.append(text(580, y + 27, verdict, 12, "#ffffff", "middle", "700"))
+        y += 56
+    return save("fig8", footer(parts, "来源：2026-11-09-draft-simple.md、k3-summary-9b.raw、s0-prefix-probe.raw、tir-a2-integrated-decision.md"))
+
+
+def main():
+    fig1_log()
+    fig2()
+    fig3()
+    fig4()
+    fig5()
+    fig6()
+    fig7()
+    fig8()
+    print("SVG written to", OUT)
 
 
 if __name__ == "__main__":
-    made = [fig1(), fig2(), fig3(), fig4(), fig5(), fig6(), fig7(), fig8()]
-    for p in made:
-        print(os.path.basename(p), os.path.getsize(p))
+    main()

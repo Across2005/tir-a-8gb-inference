@@ -1,7 +1,19 @@
-__pycache__/
-*.pyc
-.DS_Store
-Thumbs.db
-~$*
-*.tmp
+build/*
+!build/*.bat
+!build/*.ps1
+!build/*.md
 *.log
+test/spike/b0/results/
+test/spike/b0/smoke*
+downloads/
+cuda-13.5/
+runtime/
+
+# generated matrix evidence: keep csv/data-pack/report, drop raw logs and poll csv
+test/matrix/*/raw/
+test/matrix/*/gpu/
+test/matrix/*/profiles/
+test/matrix/_numbers-baseline.json
+_upload/
+test/gguf-meta/
+test/matrix/*/data-pack.md.bak

@@ -1,29 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
-<rect width="1000" height="500" fill="#ffffff"/>
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5b6572"/></marker></defs>
-<text x="300" y="82" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="start" font-weight="bold" fill="#1f2328">平均功耗（W）</text>
-<text x="286" y="143.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1f2328">4B qwen（C3）</text>
-<rect x="300" y="126.0" width="341.20000000000005" height="24" rx="3" fill="#d9822b" stroke="none"/>
-<text x="649.2" y="143.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1f2328">85.3 W</text>
-<text x="900" y="143.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#b03a2e">69 °C</text>
-<text x="286" y="199.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1f2328">8B DSR1（C3）</text>
-<rect x="300" y="182.0" width="383.12" height="24" rx="3" fill="#d9822b" stroke="none"/>
-<text x="691.12" y="199.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1f2328">95.78 W</text>
-<text x="900" y="199.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#b03a2e">74 °C</text>
-<text x="286" y="255.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1f2328">9B MTP（tir-bench）</text>
-<rect x="300" y="238.0" width="392.9599999999999" height="24" rx="3" fill="#d9822b" stroke="none"/>
-<text x="700.9599999999999" y="255.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1f2328">98.24 W</text>
-<text x="900" y="255.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#b03a2e">64 °C</text>
-<text x="286" y="311.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1f2328">9B（llama-bench）</text>
-<rect x="300" y="294.0" width="418.6" height="24" rx="3" fill="#d9822b" stroke="none"/>
-<text x="726.6" y="311.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1f2328">104.65 W</text>
-<text x="900" y="311.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#b03a2e">74 °C</text>
-<text x="286" y="367.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="end" font-weight="normal" fill="#1f2328">空闲（09:55 后）</text>
-<rect x="300" y="350.0" width="74.4" height="24" rx="3" fill="#aeb6bf" stroke="none"/>
-<text x="382.4" y="367.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="bold" fill="#1f2328">18.6 W</text>
-<text x="900" y="367.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#b03a2e">50 °C</text>
-<line x1="760.0" y1="98" x2="760.0" y2="398" stroke="#b03a2e" stroke-width="1.6" stroke-dasharray="6 4"/>
-<text x="752.0" y="92" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="end" font-weight="normal" fill="#b03a2e">上限 115 W</text>
-<text x="40" y="460" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">数据：test/power/results.jsonl（4B/8B，decode 口径）；hardware-ceiling-probe.md §2.5（llama-bench、tir-bench）；build/logs/tp1-gpu-load-2026-11-10.txt（空闲）。</text>
-<text x="40" y="480" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" text-anchor="start" font-weight="normal" fill="#5b6572">温度是同场景采样峰值/观测值，不能当作长期热稳态。</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520">
+<rect width="980" height="520" fill="#ffffff"/>
+<text x="40" y="42" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2328">图 7 TTFT 随 prompt 长度变化</text>
+<text x="40" y="68" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#8a8f98">每个点是该模型在 ceiling harness 下的三次测量中位</text>
+<polyline points="118.1,429.9 286.4,429.2 847.2,426.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.9 286.4,429.3 847.2,426.1" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="117.7,429.9 282.8,429.2 833.1,426.1" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.4 286.4,426.4 847.2,415.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.7,429.5 290.1,427.0 861.4,417.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.5 286.4,426.9 847.2,417.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.5 286.4,427.0 847.2,417.8" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.5 286.4,426.6 847.2,416.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.7,429.5 290.1,426.9 861.4,417.1" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,427.6 286.4,414.6 847.2,369.2" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.1 286.4,424.6 847.2,406.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.2 286.4,425.1 847.2,410.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.1 286.4,424.5 847.2,408.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.1 286.4,424.5 847.2,408.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.1 286.4,424.5 847.2,408.6" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.1 286.4,424.0 847.2,404.4" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.1,429.0 286.4,424.3 847.2,408.0" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="117.7,400.4 282.8,151.7" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<polyline points="118.4,404.5" fill="none" stroke="#2f6f9f" stroke-width="1.4" opacity="0.55"/>
+<text x="90.0" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">0</text>
+<text x="264.7092223821926" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">2000</text>
+<text x="439.4184447643852" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">4000</text>
+<text x="614.1276671465777" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">6000</text>
+<text x="788.8368895287704" y="448" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="middle" font-weight="400">8000</text>
+<line x1="90" y1="430.0" x2="900" y2="430.0" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="434.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">0</text>
+<line x1="90" y1="427.16577658145917" x2="900" y2="427.16577658145917" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="431.16577658145917" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">500</text>
+<line x1="90" y1="424.33155316291834" x2="900" y2="424.33155316291834" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="428.33155316291834" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">1000</text>
+<line x1="90" y1="421.49732974437745" x2="900" y2="421.49732974437745" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="425.49732974437745" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">1500</text>
+<line x1="90" y1="418.6631063258366" x2="900" y2="418.6631063258366" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="422.6631063258366" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">2000</text>
+<line x1="90" y1="415.8288829072958" x2="900" y2="415.8288829072958" stroke="#e8edf2" stroke-width="1"/>
+<text x="82" y="419.8288829072958" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="10" fill="#8a8f98" text-anchor="end" font-weight="400">2500</text>
+<text x="495.0" y="468" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="middle" font-weight="400">prompt tokens</text>
+<text x="30" y="100" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">TTFT ms</text>
+<line x1="40" y1="474" x2="940" y2="474" stroke="#8a8f98" stroke-width="1"/>
+<text x="40" y="496" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">数据：test/matrix/full1/master.csv（ttft_S/M/L 行，prefill_batch=512）</text>
 </svg>

@@ -1,126 +1,220 @@
-# TIR-A: 8 GiB 显存下的 Windows 本地推理引擎
+# TIR-A
 
-**llama.cpp fork + 14 函数 C ABI，面向单用户、单卡、进程内调用。**
+![build](https://img.shields.io/badge/build-PASSING-brightgreen)
+![license](https://img.shields.io/badge/license-MIT-blue)
+![platform](https://img.shields.io/badge/platform-Windows%20x64-lightgrey)
+![vram](https://img.shields.io/badge/VRAM-8%20GB-orange)
+![ram](https://img.shields.io/badge/RAM-16%20GB%20single%20stick-red)
+![cuda](https://img.shields.io/badge/CUDA-13.5-76B900)
 
-> TIR-A 是一个跑在 8 GiB 显存 Windows 笔记本上的进程内推理引擎：9B MTP 84 tok/s，非 MTP 模型 520-token 首 token 41–245 ms。仓库包含完整技术论文（46,925 汉字）、8 张实测数据图与可重建的 DOCX/PDF。
+**在 8GB 显存 + 16GB 内存的物理双墙下，把本地大模型的交互延迟压榨到极限。算物理账，不吹牛；正确性优先于吞吐。**
 
-**状态：工程验证版。** 单用户、单模型常驻；不是多人并发服务，也不是“多模型热切换”产品。所有数字都来自一台固定机器上的实测，换机器不能直接外推。
+TIR-A 是跑在 Windows 笔记本上的进程内推理引擎：`llama.cpp` 深度定制 + 14 函数 C ABI。没有 HTTP 服务，没有多租户，没有 CPU 回退——只有一条把权重全量放进 8GB 显存的路径，以及围绕它的测量、门禁和失败记录。
 
----
+<sub>Build 徽章反映本地 P0 门（4 测试 + 2 bench，RC=0）；仓库未配置 CI。</sub>
 
-## 1. 它是什么
+## 战绩
 
-- Windows x64 上的 `tir.dll`，对外 14 个 C 函数、8 个结构体；宿主用 Python `ctypes`、Node `koffi`、C# `P/Invoke` 或 C 直接调用。
-- 基于 llama.cpp fork，保留 `llama.h` 与 ggml/CUDA 后端；`tir-api` 负责生命周期、会话、生成、MTP、chat template。
-- 支持 1B–9B GGUF，q4 KV，CUDA 13.5，RTX 5060 Laptop 8 GiB。
-- 两条生成路径：plain decode 与 MTP 投机 decode；分块 prefill 默认批 512（带 nextn 头的模型默认 2）。
+- 🚀 **极速解码**：MiniCPM-1B 跑到 **313.9 tok/s**；Qwen3.8-9B 纯解码 **53.0 tok/s**，开启 MTP 投机 **77.2 tok/s**（acc 0.855），宽度 2 可达 **84.24**（需手动开启并单独过 parity）。
+- ⚡ **极低首字延迟**：521 token Prompt 的 TTFT 从逐 token 预填充的 **9260 ms** 压到 **265 ms**（宽批 512）。MTP 路径仍是 9.7 s，未修，列在路线图第一项。
+- 🛡️ **物理防守**：20 个本地 GGUF 全部进入测试流程；**13.43 GiB 的 Gemma-26B 在加载前被容量判断拒绝，加载器一次都没调用**。全程无系统 OOM。
+- 🔌 **极简接入**：冻结的 **14 函数 C ABI**，C / Python / Node / C# 均有最小宿主实现，位于 `tests/tir-api/`。
 
-## 2. 它不是什么（硬边界）
+## 为什么需要 TIR-A？
 
-| 不是 | 原因 |
-|---|---|
-| 多人并发 / 多 session | 9B + MTP 峰值 7607 MiB，8 GiB 卡只剩约 544 MiB；第二个 session 放不下 |
-| 多模型动态切换 | 当前一个 `tir_engine` 只常驻一个模型；切换要销毁并重建 engine/session，未实现热切换 |
-| 8B 100 tok/s | 5.03 GB/token ÷ 292 GB/s ≈ 17.2 ms/token；100 tok/s 要求 10 ms，Q4 权重物理上不允许 |
-| 9B 100 tok/s | 实测 84.24 tok/s；27.7 ms/step，要 100 需 ≤23.7 ms，差 4 ms 在 3-row verify 与回滚 |
-| 把磁盘当显存 | E 盘直接 I/O 5.10 GB/s，只够做容量层；30B 约 0.43 tok/s |
+同一台机器、同一张卡、同一个模型（Qwen3.8-9B Q4_K_M，16k q4 KV、greedy、128 token）：
 
-## 3. 实测结果
+| 对比维度 | Ollama (默认配置) | 原生 llama.cpp (手调) | **TIR-A（本项目）** |
+| :--- | :--- | :--- | :--- |
+| **521 token TTFT** | 未实测 | 未实测（同机只测过 8B 的 pp512） | **265 ms**（宽批 512；逐 token 时 9260 ms） |
+| **9B 纯解码** | 未实测 | **51.81 tok/s**（同轮同条件） | **53.0 tok/s**（贴住 HBM 墙） |
+| **9B MTP 投机** | 不支持 | 需自行改底层代码 | **77.2 tok/s**（宽度 1；宽度 2 为 84.24，需过 parity） |
+| **16k 显存峰值** | 未实测 | 未实测 | **6,929 / 8,151 MiB**（余 1,222 MiB） |
+| **超限模型处理** | 未实测 | 运行期报错 | **加载前拒绝**（13.43 GiB > 8.0 GiB） |
 
-固定条件：Windows 11、RTX 5060 Laptop 8 GiB（8151 MiB）、i7-14650HX、15.7 GiB DDR5、115 W 电源；q4 KV；除非注明，生成 128 token。
+> Ollama 那一列空着是有意的：本机没有安装，也没有同一轮的测量记录。拿没测过的数字做对比，和这个项目反对的东西是一回事。
+>
+> TIR-A 相对 llama.cpp 的差距只有 **+2.3%**（53.0 对 51.81）。真正的收益不在这 2%，而在三处：把重复 prefill 关掉（9260 → 4852 → 265 ms）、把投机头打开（+46%）、以及在加载前把装不下的模型拦掉。
 
-### 3.1 Decode
+## 核心特性
 
-| 模型 | 配置 | tok/s | 说明 |
-|---|---|---:|---|
-| 1B MiniCPM5 | C0，317 prompt，64 gen | 308.3 | 受 host 与 kernel 共同限制 |
-| 4B qwen3.5 | C0，322 prompt，128 gen | 81.8–85.9 | 有效读带宽 231 GB/s，约 76% |
-| Nemotron 4B | C0，329 prompt，128 gen | 95.1–96.7 | 281 GB/s，约 93% |
-| 8B DSR1 | C0，322 prompt，128 gen | 57.1 | 292 GB/s；功耗/显存墙 |
-| 9B plain | 16k q4，128 gen | 50.84 | llama.cpp 同条件 51.81 |
-| 9B MTP w1 | Q5_K_M，16k q4 | 74.8 | acceptance 0.855，mean_len 1.855 |
-| 9B MTP w2 | Q4_K_M，16k q4 | **84.24** | acceptance 0.685，mean_len 2.370，64-token parity |
-| 9B MTP w3 | Q4_K_M，16k q4 | 76.94 | mean_len 2.723，4-row verify 更贵 |
+- **对抗 16GB 内存墙**：本机内存带宽 33.7 GB/s，回退 CPU 的每 token 代价远高于 GPU，具体慢多少没有测——因为没有把它当作可用路径。这个 fork 的盘流式 residency hook 只有 CPU 实现，与 CUDA offload 互斥；层一旦上 GPU，盘流式必须关（`LLAMA_DISK_STREAM_MB=0`）。
+- **硬核算账与显存守卫**：总显存 8,151 MiB，扣掉约 **1.1–1.3 GiB 桌面基线**（实测空闲 6,830–7,039 MiB）后按余量判断能否放下。运行脚本在每次加载前核算，空闲低于 **800 MiB** 直接停；引擎在 context 创建失败时返回 `TIR_E_OOM`，不把 OOM 留给运行期。
+- **数值正确性门禁**：`qwen35` 是 hybrid SSM，3 行 verify 会走 chunked kernel、logits 偏约 0.13；所以 MTP 验证批在带 nextn 头的模型上限制为 2，默认宽度 1。任何配置变更都要过 **64-token parity**，不过就退回。
+- **自动适配的 Kernel 白名单**：`prefill_batch_for_arch` 按架构分配——`llama / qwen3 / qwen35 / nemotron_h` 给 512，带 nextn 头给 2，未知架构回退 1。宁可慢，不冒数值风险。
 
-### 3.2 520-token 首 token（TTFT）
+## 快速上手
 
-| 模型 | 逐 token prefill | 默认批 512/2 | 收益 |
-|---|---:|---:|---:|
-| 1B | 1219.7 ms | 41.5 ms | 29.36× |
-| 4.2B qwen3.5 | 4943.6 ms | 158.9 ms | 31.11× |
-| Nemotron 4B | 4389.3 ms | 145.3 ms | 30.21× |
-| 8B DSR1 | 7788.2 ms | 245.3 ms | 31.75× |
-| 9B（MTP，默认 2） | 9168.6 ms | 4799.0 ms | 1.91× |
+### 构建
 
-9B 因为带 nextn 头，默认批保持 2，以保证 plain 与 MTP 的 target 数值起点一致；它的 prefill 收益因此只有 1.91×。
+需要 **CUDA 13.5**（`runtime\cuda-13.5`）、Visual Studio 2022/2026 的 `vcvars64`、CMake + Ninja：
 
-### 3.3 功耗与能效
-
-| 模型 | 平均功耗 | 温度峰值 | decode 能效 |
-|---|---:|---:|---:|
-| 4B qwen | 85.3 W | 69 °C | 0.9295 tokens/J |
-| 8B DSR1 | 95.78 W | 74 °C | 0.5736 tokens/J |
-| 9B llama-bench | 104.65 W | 74 °C | — |
-| 9B tir-bench MTP | 98.24 W | 64 °C | — |
-
-功耗上限 115 W；实测峰值 109.28 W，余量约 5%。这不是温度墙，是功耗/带宽墙。
-
-## 4. 为什么这些数字可信
-
-1. **同轮校准**：C0 用同一构建、同一轮次、真实上下文、带 GPU 遥测重测了 1B/4B/8B，推翻了早期串行跑出的“92/64”。
-2. **五模型矩阵**：1B、4.2B、Nemotron 4B、8B、9B 都跑 520 token，指标固定为 token parity、TTFT 收益、默认值画像。
-3. **门禁会失败**：A5 用变异测试证明旧断言在“默认批 2 退回 1”时会全绿；新判据 `def_err < 0.5 * seq_err` 会红（`def_err=34.2` 对 `seq_err=4505.1`）。一个不会失败的测试等于没有测试。
-4. **失败照实写**：ngram 只在重复文本有效、draft-simple 前向太贵、Q3/IQ4_XS 无收益、Q4_0 在 9B 上 token 38 parity 失败、TIR-C 自研运行时废止。
-
-## 5. 仓库结构
-
-```
-.
-├── README.md
-├── LICENSE                     # MIT
-├── CITATION.cff
-├── paper/
-│   ├── paper.md                # 论文主稿（46,925 汉字）
-│   ├── paper.pdf               # 115 页
-│   ├── paper.docx              # 含目录，可在 Word 中更新
-│   ├── figures/                # 8 张 SVG + PNG，数据可追溯
-│   └── build_docx.py           # Markdown → DOCX
-└── docs/
-    ├── roadmap.md              # 后续设计（标注：未实现）
-    └── evidence-index.md       # 论文引用路径与来源说明
+```bat
+build\build-tir-api.bat
 ```
 
-论文中的本机绝对路径已替换为 `<MODEL_DIR>`、`<TIR_ROOT>`、`<WORKSPACE>`；原始日志与模型清单不随仓库发布。
+产物在 `build\tir-api\bin\`：`tir.dll`、`llama.dll`、`ggml*.dll`、`tir-bench.exe`、`tir-test-*.exe`。
 
-## 6. 重建论文
+> **DLL 纪律**：`runtime\llama-b12202\` 是上游预编译包，自带一套同名 ggml/llama DLL。混进 PATH 会出现"能加载、第一次 decode 报 CUDA illegal memory access"。PATH 只留 `runtime\cuda-13.5\bin\x64` 与 `build\tir-api\bin`。
 
-```bash
-cd paper
-python build_docx.py paper.md paper.docx
-# DOCX 目录域在 Word 中打开时更新；PDF 可用 LibreOffice/Word 导出
-python figures/gen_figures.py   # 重新生成 8 张 SVG（纯标准库）
+### 最简 Python 调用
+
+完整宿主见 `src/llama.cpp-fork/tests/tir-api/python_host.py`：
+
+```python
+import ctypes, os
+from ctypes import (CFUNCTYPE, POINTER, Structure, c_char_p, c_float,
+                    c_int32, c_uint32, c_void_p)
+
+# 必须在引擎加载模型之前设置：盘流式与 CUDA offload 互斥
+os.environ["LLAMA_DISK_STREAM_MB"] = "0"
+
+BIN = os.path.abspath(r"build\tir-api\bin")
+os.environ["PATH"] = BIN + os.pathsep + os.environ["PATH"]
+lib = ctypes.CDLL(os.path.join(BIN, "tir.dll"), winmode=0)
+
+class Options(Structure):
+    _fields_ = [("struct_size", c_uint32), ("version", c_uint32),
+                ("model_path", c_char_p), ("n_ctx", c_int32),
+                ("n_gpu_layers", c_int32), ("n_threads", c_int32),
+                ("kv_q4", c_int32), ("mtp", c_int32)]
+
+class Request(Structure):
+    _fields_ = [("struct_size", c_uint32), ("version", c_uint32),
+                ("prompt", c_char_p), ("n_predict", c_int32),
+                ("greedy", c_int32), ("temperature", c_float),
+                ("seed", c_uint32)]
+
+class Token(Structure):
+    _fields_ = [("id", c_int32), ("piece", c_char_p),
+                ("piece_len", c_uint32), ("index", c_uint32)]
+
+ON_TOKEN = CFUNCTYPE(c_int32, c_void_p, POINTER(Token))
+
+class Callbacks(Structure):
+    _fields_ = [("on_token", ON_TOKEN), ("on_event", c_void_p)]
+
+lib.tir_engine_create.restype = c_void_p
+lib.tir_engine_create.argtypes = [POINTER(Options)]
+lib.tir_engine_load.restype = c_int32
+lib.tir_engine_load.argtypes = [c_void_p]
+lib.tir_session_create.restype = c_void_p
+lib.tir_session_create.argtypes = [c_void_p]
+lib.tir_session_generate.restype = c_int32
+lib.tir_session_generate.argtypes = [c_void_p, POINTER(Request),
+                                     POINTER(Callbacks), c_void_p]
+lib.tir_last_error.restype = c_char_p
+
+opt = Options(ctypes.sizeof(Options), 1,
+              rb"E:\model\qwen9b-Q4_K_M.gguf", 8192, 99, 8, 1, 0)
+eng = lib.tir_engine_create(ctypes.byref(opt))
+if not eng:
+    raise RuntimeError(lib.tir_last_error().decode())
+if lib.tir_engine_load(eng) != 0:          # TIR_OK == 0
+    raise RuntimeError(lib.tir_last_error().decode())
+
+sess = lib.tir_session_create(eng)
+
+@ON_TOKEN
+def on_token(user, tok):
+    piece = tok.contents.piece[:tok.contents.piece_len]
+    print(piece.decode("utf-8", "replace"), end="", flush=True)
+    return 0                                # 返回非 0 即取消
+
+cb = Callbacks(on_token, None)
+req = Request(ctypes.sizeof(Request), 1,
+              b"The capital of France is", 64, 1, 0.0, 1234)
+rc = lib.tir_session_generate(sess, ctypes.byref(req), ctypes.byref(cb), None)
+print("\nrc =", rc)
 ```
 
-依赖：Python 3.10+、`python-docx`；图表只用标准库。PDF 由 DOCX 导出。
+> **排雷**：`LLAMA_DISK_STREAM_MB=0` 必须在加载模型之前设置。16GB 内存下磁盘流式是死路——盘上每 token 顺序读 6GB 权重约 1.1 s，那不叫交互。
 
-## 7. 路线图
+## 20 模型极限压测
 
-见 [docs/roadmap.md](docs/roadmap.md)。四条都标注了“设计，未实现”：
+固定条件：Windows 11、RTX 5060 Laptop（8,151 MiB）、i7-14650HX、15.7 GiB DDR5、115 W；q4 KV、greedy、128 token；ctx 16k。
 
-1. `ModelTraits`：把架构白名单从代码常量改成 GGUF metadata 驱动。
-2. OpenAI 兼容层：`/v1/chat/completions` + SSE，包装 `tir_session_generate`。
-3. 多轮 KV/前缀复用：trim 到公共前缀，只 prefill 增量（当前每次 generate 都清空 memory）。
-4. 9B 3-row verify 优化：把 step 从 27.7 ms 压到 24 ms 以下。
+| 模型 (量化) | 权重 (GiB) | 纯解码 (tok/s) | 峰值显存 (MiB) | 状态判定 |
+| :--- | ---: | ---: | ---: | :--- |
+| MiniCPM5-1B (Q4) | 0.64 | **313.9** | 1,898 | 跑通 (极速) |
+| Qwen3.5-4.2B (Q4) | 2.36 | 96.7 | 4,084 | 跑通 (甜点) |
+| DSR1-8B (Q4_K_M) | 4.68 | 59.0 | 6,479 | 跑通 |
+| Qwen3.8-9B (Q4_K_M) | 5.37 | 53.0 | 6,929 | 跑通 (主力) |
+| Bonsai-27B (Q1_0) | 3.53 | 46.1 | 5,396 | 跑通 (极限量化) |
+| Gemma4-12B (Q4_0) | 6.48 | 10.1 | 7,716 | **边缘降级 (余量仅 435 MiB)** |
+| Spark-X2.5-4B (BF16) | 7.66 | 4.2 | 7,681 | **叫停 (严重换页)** |
+| Gemma4-26B-A4B | 13.43 | - | - | **拒绝加载 (超容量)** |
 
-多模型热切换不在当前路线图内：8 GiB 显存下，9B + MTP 已占 7607 MiB，切换必须先完整卸载再加载，代价与风险都未验证。
+![Perf](docs/images/perf.png)
+![TTFT](docs/images/ttft.png)
 
-## 8. 引用与许可
+<details>
+<summary>点击查看 20 个模型全量极限压测矩阵</summary>
 
-- 引用信息：[CITATION.cff](CITATION.cff)
-- 许可证：MIT，Copyright (c) 2026 TIR-A contributors
+| 模型 | 权重 GiB | plain tok/s | MTP（接受率） | TTFT S / M / L ms | 峰值 MiB | 判定 |
+|---|---:|---:|---:|---|---:|---|
+| minicpm5-1b | 0.64 | 313.9 | — | 23.3 / 142.7 / 685.0 | 1,898 | 跑通 |
+| qwen35-0.8b-q4km | 0.49 | 274.6 | — | 25.4 / 148.2 / 585.1 | 2,032 | parity 诊断失败 |
+| qwen3-0.6b-q8 | 0.59 | 243.6 | — | 20.8 / 131.3 / 692.8 | 2,366 | 跑通 |
+| nemotron-4b-q4_0 | 2.28 | 116.1 | — | 83.7 / 522.1 / 2,194.2 | 3,634 | 跑通 |
+| qwen35-4.2b-iq4xs | 2.35 | 97.0 | — | 88.1 / 543.9 / 2,201.3 | 4,064 | 跑通 |
+| qwen35-4.2b-q4_0 | 2.36 | 96.7 | — | 85.0 / 528.9 / 2,152.9 | 4,084 | 跑通 |
+| qwen35-4.2b-q3km | 2.10 | 86.2 | — | 101.0 / 639.5 / 2,564.9 | 3,830 | 跑通 |
+| qwen35-opus-4b | 2.51 | 84.9 | — | 96.2 / 593.1 / 2,360.6 | 4,247 | 跑通 |
+| dsr1-8b-q4km | 4.68 | 59.0 | — | 153.0 / 951.4 / 4,147.2 | 6,479 | 跑通 |
+| qwen9b-q4_0 | 5.07 | 56.8 | 77.3（0.767） | 141.1 / 858.7 / 3,401.7 | 6,605 | 跑通 |
+| q3.5-9b | 5.23 | 52.9 | — | 161.6 / 972.2 / 3,768.5 | 6,581 | 跑通 |
+| qwythos9b | 5.23 | 52.7 | — | 162.6 / 969.8 / 3,763.5 | 6,581 | 跑通 |
+| qwen9b-q4km | 5.37 | 53.0 | 77.2（0.855） | 162.9 / 968.9 / 3,771.7 | 6,929 | 跑通 |
+| qwen9b-q5km | 6.18 | 47.2 | 75.8（1.000） | 169.0 / 1,001.5 / 3,878.0 | 7,561 | 跑通 |
+| bonsai-27b-q1_0 | 3.53 | 46.1 | — | 424.0 / 2,720.3 / 10,723.9 | 5,396 | 跑通 |
+| glm4.6v-q4km | 5.73 | 45.0 | — | 167.2 / 1,051.3 / 4,515.1 | 7,137 | parity 政策分歧 |
+| gemma4-12b-q4_0 | 6.48 | 10.1 | — | 5,214.0 / 49,089.4 / 跳过 | 7,716 | 边缘降级 |
+| spark-x2.5-4b | 7.66 | 4.2 | — | 4,501.3 / — / — | 7,681 | 能跑不可用 |
+| gemma4-26b-a4b | 13.43 | — | — | — | — | 超容量未加载 |
 
----
+“边缘降级”指能加载、短档能跑，但余量撑不住长上下文——继续测只会测到显存交换，不是算力。
 
-## English abstract
+</details>
 
-TIR-A is an in-process local inference engine for a single Windows laptop with an 8 GiB RTX 5060 Laptop GPU. It exposes a 14-function C ABI over a llama.cpp fork, supports 1B–9B GGUF models with q4 KV, and combines MTP speculative decoding with chunked prefill. Measured results: 9B Q4_K_M + MTP width 2 reaches 84.24 tok/s with 64-token parity; 4B runs at 82–86 tok/s, Nemotron 4B at 95–97, 8B at 57.1, and 1B at 308. For a 520-token prompt, TTFT drops to 41–245 ms on non-MTP models via a default prefill batch of 512, while MTP models keep a batch of 2 to preserve numerical parity. The report also documents the hardware limits: an 8B model cannot reach 100 tok/s at Q4 under 292 GB/s effective bandwidth, 9B tops out near 84 tok/s, and multi-session serving does not fit in 8 GiB. All numbers come from one fixed machine and include the failed paths, not just the wins.
+<details>
+<summary>这张表怎么测的（口径与已知坑）</summary>
+
+- 每模型 1 次 warmup + 3 次计时取均值；8 token 短跑不进任何结论。
+- 速率走引擎默认批；TTFT 显式 `TIR_PREFILL_BATCH=512`。两者批宽不同，只作同模型内的条件记录。
+- 边缘模型的长档与 `test_prefill` 显式跳过，理由写入数据（`vram_edge`），不当作数据缺失。
+- GPU 串行、模型间冷却；每步检查空闲显存 ≥800 MiB，低于即停。
+- 原始日志、CSV 与驱动在 `test/matrix/full1/` 与 `tools/matrix/run_matrix.py`。
+
+</details>
+
+## 论文与工程报告
+
+这个仓库不只交付代码，也交付判断的依据。
+
+- [**《TIR-A 结项技术论文》**](paper/paper.md)（41,653 汉字）——上限校准、20 模型矩阵，以及两次关键反转：MTP 的 `eval_ms` 语义与 plain 相反；主机开销先被算成 91%，补上漏项后更正为 20.0%。同目录有 DOCX/PDF。
+- [**《上一版工程报告》**](docs/archive/2026-11-10-engineering-report.md)（46,925 汉字）——踩坑、失败与回退、门禁设计。
+
+三个问题的答案在这里：**为什么 8B 到不了 100 tok/s？** 看论文 §3.1 的物理账（5.03 GB/token ÷ 292 GB/s ≈ 17.2 ms，100 tok/s 要求 10 ms）。**为什么 27B 反而能跑？** 因为它是 1-bit 的 3.53 GiB，装得下就赢了一半。**91% 的归因错误怎么纠正的？** 看 §2.6：漏减 `prompt_eval_ms`，加上 prefill 统计越界，两处修完才是 20.0%。
+
+## 许可证与血统
+
+**主体协议：MIT**，见 [LICENSE](LICENSE)。
+
+**代码基座（fork 血统）**
+
+- 直接上游：[`Horn-Studio/diskinfer-windows`](https://github.com/Horn-Studio/diskinfer-windows)。本仓库的 `src/llama.cpp-fork/` 在它的 fork 上继续改；同为 `llama.cpp 0.7.0` / `ggml 0.27.0`，保留盘流式钩子（`src/llama-disk.cpp`）与节点驻留回调。
+- 间接上游：[`ggml-org/llama.cpp`](https://github.com/ggml-org/llama.cpp)。量化 kernel、KV 布局、CUDA 图、`common_speculative` 来自上游；本仓库新增 `src/tir-api/`（C ABI）、`src/tier-memory` 与 CUDA 节点驻留回调。`vendor/` 依赖（cpp-httplib、nlohmann、stb 等）保持上游原样。
+
+**策略借鉴（只借机制，不搬代码）**
+
+- [`Niko1221/Strata`](https://github.com/Niko1221/Strata)：会话前缀 checkpoint。其论文报告 262K 续问 TTFT 904 s → 0.53 s；本机 16GB 内存跑不了它支持的模型包。
+- [`kvcache-ai/ktransformers`](https://github.com/kvcache-ai/ktransformers)：pinned 奇偶双缓冲、`cudaLaunchHostFunc` 欠一拍流水。其 NUMA/AMX 栈在消费级 Windows 上不可用。
+- [`leonickson1/Swiftlet`](https://github.com/leonickson1/Swiftlet)：固定 stride 专家块与 LFU+recency 缓存。Swift/Metal 不能在本机编译，只借设计。
+- `FMInference/FlexLLMGen`：`Tgen/Tpre` 代价式；`lyogavin/airllm`：super-block 落盘；`Tiiny-AI/PowerInfer` 的 `smallthinker` 子树：ExpertCache LRU。PowerInfer 的神经元稀疏依赖 ReLU，与 Qwen 的 SwiGLU 不匹配，明确不做。
+
+所有第三方库与代码片段均遵循其各自许可证（Apache-2.0 / MIT 等）。本仓库不包含上述项目的源码副本，只包含调研结论与自行实现的调度形状。
+
+## 状态
+
+工程验证版。单用户、单模型常驻，不是并发服务。所有数字来自一台固定机器；换卡、换量化、换上下文都要重测——论文里每个数都带条件，不搬结论。

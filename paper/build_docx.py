@@ -266,7 +266,7 @@ def build(md_path, out_path):
     set_run_font(r2, HEAD_FONT, 14, color=(0x2F, 0x6F, 0x9F))
     for _ in range(8):
         doc.add_paragraph()
-    for txt in ("TIR-A 引擎项目开发实践记录", "2026-11-10"):
+    for txt in ("TIR-A 技术报告：8 GiB 笔记本上的 llama.cpp 引擎实践", "2026-11-11"):
         pp = doc.add_paragraph()
         pp.alignment = WD_ALIGN_PARAGRAPH.CENTER
         rr = pp.add_run(txt)

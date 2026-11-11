@@ -1,0 +1,29 @@
+{
+  "schema": "tir.matrix-models/v1",
+  "models": [
+    {"id": "qwen3-0.6b-q8", "path": "E:\\Deepseek\\artifacts\\Qwen3-0.6B-Q8_0.gguf", "source": "artifacts", "notes": "whitelisted arch, cheapest model"},
+    {"id": "qwen35-0.8b-q4km", "path": "E:\\Deepseek\\artifacts\\Qwen3.5-0.8B-Q4_K_M.gguf", "source": "artifacts", "notes": "hybrid ssm"},
+    {"id": "minicpm5-1b", "path": "E:\\model\\blobs\\sha256-b1c3bf2995e96cb792a0031e4e1497a500e9244c68ba17c24a7e6edf1fc59019", "source": "ollama", "canary": true, "notes": "llama arch, canary"},
+    {"id": "nemotron-4b-q4_0", "path": "E:\\Deepseek\\artifacts\\nemotron-4b-Q4_0.gguf", "source": "artifacts", "notes": "EOG sensitive, ctx_train 1M"},
+    {"id": "nemotron-nano-4b-q4km", "path": "E:\\model\\bionic\\lmstudio-community\\NVIDIA-Nemotron-3-Nano-4B-GGUF\\NVIDIA-Nemotron-3-Nano-4B-Q4_K_M.gguf", "source": "lmstudio", "notes": "ctx_train 1M"},
+    {"id": "qwen35-4.2b-q4_0", "path": "E:\\Deepseek\\artifacts\\qwen35-4.2b-Q4_0.gguf", "source": "artifacts", "notes": "best 4B historically"},
+    {"id": "qwen35-4.2b-q3km", "path": "E:\\Deepseek\\artifacts\\qwen35-4.2b-Q3_K_M.gguf", "source": "artifacts", "notes": "fewer bytes, not faster"},
+    {"id": "qwen35-4.2b-iq4xs", "path": "E:\\Deepseek\\artifacts\\qwen35-4.2b-IQ4_XS.gguf", "source": "artifacts", "notes": "no proven gain"},
+    {"id": "qwen35-opus-4b", "path": "E:\\model\\blobs\\sha256-de8cf2454c46ec34e6b991dc11f5dd42d543926272d8a59d36ceb5a2eaf7962a", "source": "ollama", "notes": "qwen35 4B"},
+    {"id": "bonsai-27b-q1_0", "path": "E:\\model\\bionic\\lmstudio-community\\Bonsai-27B-GGUF\\Bonsai-27B-Q1_0.gguf", "source": "lmstudio", "notes": "Q1_0 has no vec_dot specialization on CUDA"},
+    {"id": "dsr1-8b-q4km", "path": "E:\\model\\bionic\\lmstudio-community\\DeepSeek-R1-0528-Qwen3-8B-GGUF\\DeepSeek-R1-0528-Qwen3-8B-Q4_K_M.gguf", "source": "lmstudio", "notes": "roofline eff ~97%"},
+    {"id": "q3.5-9b", "path": "E:\\model\\blobs\\sha256-e0978cd3b5741725cf43f609e9df02dbc6f6e2e2ead5ab6cb4790aeebab8435e", "source": "ollama", "notes": "160 bytes apart from qwythos9b, do not dedupe"},
+    {"id": "qwythos9b", "path": "E:\\model\\blobs\\sha256-f5472d13060827fa50779548264b9b9f6b94a9f67b77d5c5b4119b072b0e8780", "source": "ollama", "notes": "ctx_train 1M"},
+    {"id": "glm4.6v-q4km", "path": "E:\\model\\bionic\\lmstudio-community\\GLM-4.6V-Flash-GGUF\\GLM-4.6V-Flash-Q4_K_M.gguf", "source": "lmstudio", "notes": "non-whitelisted arch, vision not supported"},
+    {"id": "gemma4-12b-q4_0", "path": "E:\\model\\bionic\\lmstudio-community\\gemma-4-12B-it-QAT-GGUF\\gemma-4-12B-it-QAT-Q4_0.gguf", "source": "lmstudio", "notes": "edge fit, sliding window"},
+    {"id": "qwen9b-q5km", "path": "E:\\model\\bionic\\Qwen\\Qwen3.8-9B-Distill-GGUF\\Qwen3.8-9B-Q5_K_M.gguf", "source": "lmstudio", "notes": "primary MTP model"},
+    {"id": "qwen9b-q4km", "path": "E:\\Deepseek\\artifacts\\qwen9b-Q4_K_M.gguf", "source": "artifacts", "notes": "primary MTP model"},
+    {"id": "qwen9b-q4_0", "path": "E:\\Deepseek\\artifacts\\qwen9b-Q4_0.gguf", "source": "artifacts", "notes": "known plain/MTP divergence at token 38"},
+    {"id": "spark-x2.5-4b", "path": "E:\\model\\bionic\\SparkX\\Spark-X2.5-4B-GGUF\\Spark-X2.5-4B.gguf", "source": "lmstudio", "notes": "7.66 GiB, expected OOM"},
+    {"id": "gemma4-26b-a4b", "path": "E:\\model\\bionic\\lmstudio-community\\gemma-4-26B-A4B-it-QAT-GGUF\\gemma-4-26B-A4B-it-QAT-Q4_0.gguf", "source": "lmstudio", "notes": "13.45 GiB, exceeds total VRAM"},
+    {"id": "mmproj-bonsai-27b", "path": "E:\\model\\bionic\\lmstudio-community\\Bonsai-27B-GGUF\\mmproj-Bonsai-27B-BF16.gguf", "source": "lmstudio", "exclude": true, "exclude_reason": "vision_projector_not_llm"},
+    {"id": "mmproj-gemma4-12b", "path": "E:\\model\\bionic\\lmstudio-community\\gemma-4-12B-it-QAT-GGUF\\mmproj-gemma-4-12B-it-QAT-BF16.gguf", "source": "lmstudio", "exclude": true, "exclude_reason": "vision_projector_not_llm"},
+    {"id": "mmproj-gemma4-26b", "path": "E:\\model\\bionic\\lmstudio-community\\gemma-4-26B-A4B-it-QAT-GGUF\\mmproj-gemma-4-26B-A4B-it-QAT-BF16.gguf", "source": "lmstudio", "exclude": true, "exclude_reason": "vision_projector_not_llm"},
+    {"id": "mmproj-glm4.6v", "path": "E:\\model\\bionic\\lmstudio-community\\GLM-4.6V-Flash-GGUF\\mmproj-GLM-4.6V-Flash-F16.gguf", "source": "lmstudio", "exclude": true, "exclude_reason": "vision_projector_not_llm"}
+  ]
+}

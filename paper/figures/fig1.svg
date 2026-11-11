@@ -1,29 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="460" viewBox="0 0 1000 460">
-<rect width="1000" height="460" fill="#ffffff"/>
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5b6572"/></marker></defs>
-<text x="40" y="74" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="start" font-weight="normal" fill="#5b6572">对数轴，单位 GB/s；数值为实测有效带宽</text>
-<line x1="300.0" y1="88" x2="300.0" y2="372" stroke="#d7dce2" stroke-width="1"/>
-<text x="300.0" y="392" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">1</text>
-<line x1="500.0" y1="88" x2="500.0" y2="372" stroke="#d7dce2" stroke-width="1"/>
-<text x="500.0" y="392" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">10</text>
-<line x1="700.0" y1="88" x2="700.0" y2="372" stroke="#d7dce2" stroke-width="1"/>
-<text x="700.0" y="392" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">100</text>
-<line x1="900.0" y1="88" x2="900.0" y2="372" stroke="#d7dce2" stroke-width="1"/>
-<text x="900.0" y="392" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="middle" font-weight="normal" fill="#5b6572">1000</text>
-<text x="286" y="127.8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">HBM 纯读</text>
-<rect x="300" y="106.184" width="503.62378942863063" height="33.232" rx="3" fill="#2f6f9f" stroke="none"/>
-<text x="811.6237894286306" y="127.8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f2328">329.7</text>
-<text x="286" y="181.39999999999998" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">HBM 拷贝（读+写）</text>
-<rect x="300" y="159.784" width="497.22939936131456" height="33.232" rx="3" fill="#7fa8c4" stroke="none"/>
-<text x="805.2293993613146" y="181.39999999999998" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f2328">306.3</text>
-<text x="286" y="235.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">CPU 16 线程 memcpy</text>
-<rect x="300" y="213.384" width="305.5259801742677" height="33.232" rx="3" fill="#3a7d44" stroke="none"/>
-<text x="613.5259801742677" y="235.0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f2328">33.7</text>
-<text x="286" y="288.6" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">PCIe pinned H2D（热态）</text>
-<rect x="300" y="266.98400000000004" width="285.1720290155681" height="33.232" rx="3" fill="#d9822b" stroke="none"/>
-<text x="593.1720290155681" y="288.6" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f2328">26.66</text>
-<text x="286" y="342.2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" text-anchor="end" font-weight="normal" fill="#1f2328">NVMe 直接 I/O（4 MiB）</text>
-<rect x="300" y="320.584" width="141.5140352195873" height="33.232" rx="3" fill="#b03a2e" stroke="none"/>
-<text x="449.5140352195873" y="342.2" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" text-anchor="start" font-weight="bold" fill="#1f2328">5.1</text>
-<text x="40" y="426" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#5b6572">数据：docs/reports/2026-11-09-hardware-ceiling-probe.md §2.1–§2.4；pageable H2D 约 8.3 GB/s，未画。</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520">
+<rect width="980" height="520" fill="#ffffff"/>
+<text x="40" y="42" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1f2328">图 1 本机实测有效带宽：显存、内存、PCIe 与 NVMe</text>
+<text x="40" y="68" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="13" fill="#8a8f98">对数尺度；显存比 PCIe 快约 12 倍，比 NVMe 快约 59 倍</text>
+<line x1="250.0" y1="96" x2="250.0" y2="420" stroke="#e8edf2" stroke-width="1"/>
+<text x="250.0" y="440" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="middle" font-weight="400">1</text>
+<line x1="490.8326135361806" y1="96" x2="490.8326135361806" y2="420" stroke="#e8edf2" stroke-width="1"/>
+<text x="490.8326135361806" y="440" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="middle" font-weight="400">10</text>
+<line x1="731.6652270723612" y1="96" x2="731.6652270723612" y2="420" stroke="#e8edf2" stroke-width="1"/>
+<text x="731.6652270723612" y="440" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="middle" font-weight="400">100</text>
+<line x1="846.5715858201593" y1="96" x2="846.5715858201593" y2="420" stroke="#e8edf2" stroke-width="1"/>
+<text x="846.5715858201593" y="440" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="middle" font-weight="400">300</text>
+<text x="40" y="142" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" fill="#1f2328" text-anchor="start" font-weight="400">显存 HBM 读</text>
+<rect x="250" y="120" width="606.5402943680948" height="30" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
+<text x="864.5402943680948" y="140" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="400">330 GB/s  实测峰值；copy 306</text>
+<text x="40" y="200" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" fill="#1f2328" text-anchor="start" font-weight="400">CPU 内存</text>
+<rect x="250" y="178" width="367.9031015428609" height="30" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
+<text x="625.9031015428609" y="198" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="400">33.7 GB/s  DDR5 单条</text>
+<text x="40" y="258" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" fill="#1f2328" text-anchor="start" font-weight="400">PCIe H2D</text>
+<rect x="250" y="236" width="343.55043531322417" height="30" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
+<text x="601.5504353132242" y="256" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="400">26.7 GB/s  热态可固定内存</text>
+<text x="40" y="316" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" fill="#1f2328" text-anchor="start" font-weight="400">E 盘顺序读</text>
+<rect x="250" y="294" width="179.43830933663196" height="30" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
+<text x="437.43830933663196" y="314" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="400">5.56 GB/s  Gen4 x4 QD1</text>
+<text x="40" y="374" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="14" fill="#1f2328" text-anchor="start" font-weight="400">E 盘写</text>
+<rect x="250" y="352" width="153.2870435629266" height="30" rx="4" fill="#2f6f9f" stroke="#2f6f9f" stroke-width="1"/>
+<text x="411.2870435629266" y="372" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="12" fill="#1f2328" text-anchor="start" font-weight="400">4.33 GB/s  Gen4 x4 QD1</text>
+<line x1="40" y1="474" x2="940" y2="474" stroke="#8a8f98" stroke-width="1"/>
+<text x="40" y="496" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="11" fill="#8a8f98" text-anchor="start" font-weight="400">数据：docs/reports/2026-11-09-hardware-ceiling-probe.md §2</text>
 </svg>

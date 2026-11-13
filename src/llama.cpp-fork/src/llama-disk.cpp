@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Derived from Horn-Studio/diskinfer-windows (Apache-2.0); modified for TIR-A.
 #include "llama-disk.h"
 
 #include "ggml.h"

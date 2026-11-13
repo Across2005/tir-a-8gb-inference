@@ -210,6 +210,8 @@ print("\nrc =", rc)
 
 **主体协议：MIT**，见 [LICENSE](LICENSE)。
 
+**许可分流**：`src/llama.cpp-fork` 中源自 `diskinfer-windows`（Apache-2.0）的盘流式与 `diskui` 部分按 Apache-2.0，见 [LICENSE-APACHE-2.0](LICENSE-APACHE-2.0) 与 [NOTICE](NOTICE)；其余原创代码按 MIT。第三方组件清单见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+
 **代码基座（fork 血统）**
 
 - 直接上游：[`Horn-Studio/diskinfer-windows`](https://github.com/Horn-Studio/diskinfer-windows)。本仓库的 `src/llama.cpp-fork/` 在它的 fork 上继续改；同为 `llama.cpp 0.7.0` / `ggml 0.27.0`，保留盘流式钩子（`src/llama-disk.cpp`）与节点驻留回调。

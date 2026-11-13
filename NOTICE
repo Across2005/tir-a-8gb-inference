@@ -1,0 +1,17 @@
+TIR-A
+Copyright (c) 2026 TIR-A contributors
+
+This distribution includes software derived from diskinfer-windows
+(https://github.com/Horn-Studio/diskinfer-windows), which is licensed
+under the Apache License, Version 2.0. A copy of that license is provided
+in LICENSE-APACHE-2.0.
+
+Derived and modified files include:
+  src/llama.cpp-fork/src/llama-disk.cpp
+  src/llama.cpp-fork/src/llama-disk.h
+  src/llama.cpp-fork/examples/diskui/CMakeLists.txt
+  src/llama.cpp-fork/examples/diskui/diskui.cpp
+
+All other original code in this repository is licensed under the MIT
+License; see LICENSE. Third-party components and their licenses are
+listed in THIRD_PARTY_NOTICES.md.

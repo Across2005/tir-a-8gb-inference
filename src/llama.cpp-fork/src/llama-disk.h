@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Derived from Horn-Studio/diskinfer-windows (Apache-2.0); modified for TIR-A.
 #pragma once
 
 // experimental: keep the model weights on disk and stream them into a fixed RAM arena

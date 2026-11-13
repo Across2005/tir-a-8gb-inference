@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Derived from Horn-Studio/diskinfer-windows (Apache-2.0); modified for TIR-A.
 // disktui: single turn chat UI for the disk streaming build
 //
 // layout: the upper part of the terminal is a scrolling log, the last three rows are

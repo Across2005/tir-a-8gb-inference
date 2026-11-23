@@ -1,0 +1,32 @@
+DOI: 10.5281/zenodo.24456762
+Concept DOI (cite all versions): 10.5281/zenodo.24456761
+Record: https://zenodo.org/records/24456762
+File (anonymized double-blind version on Zenodo): JSys_Problem_Paper.pdf
+File (author version in this repository): JSys_Problem_Paper_author_version.pdf
+
+Title: Problem: 8 GiB, 306-330 GB/s, 50/115 W: A Measured Boundary Map for Fully Resident LLM Inference
+Creator: Zheng, Yue (ORCID 0009-0001-6730-0935), South China Normal University
+Resource type: Publication / Preprint
+License: CC BY 4.0
+Published: 2026-11-23 (version v1)
+Pages: 18
+
+--- Citation (BibTeX) ---
+@misc{zheng2026measured8gibmap,
+  title        = {Problem: 8 GiB, 306--330 GB/s, 50/115 W: A Measured Boundary Map for Fully Resident LLM Inference},
+  author       = {Zheng, Yue},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.24456762},
+  url          = {https://doi.org/10.5281/zenodo.24456762},
+  license      = {CC BY 4.0},
+  note         = {ORCID 0009-0001-6730-0935}
+}
+
+--- Citation (plain) ---
+Zheng, Y. (2026). Problem: 8 GiB, 306-330 GB/s, 50/115 W: A Measured Boundary Map
+for Fully Resident LLM Inference. Zenodo. https://doi.org/10.5281/zenodo.24456762
+
+--- Citation (APA 7) ---
+Zheng, Y. (2026). Problem: 8 GiB, 306-330 GB/s, 50/115 W: A measured boundary map for
+fully resident LLM inference. Zenodo. https://doi.org/10.5281/zenodo.24456762

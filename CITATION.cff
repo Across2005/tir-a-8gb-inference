@@ -20,3 +20,16 @@ keywords:
   - CUDA
   - Windows
   - GGUF
+preferred-citation:
+  type: article
+  title: "Problem: 8 GiB, 306-330 GB/s, 50/115 W: A Measured Boundary Map for Fully Resident LLM Inference"
+  authors:
+    - family-names: Zheng
+      given-names: Yue
+      orcid: "https://orcid.org/0009-0001-6730-0935"
+      affiliation: "South China Normal University"
+  journal: Zenodo
+  year: 2026
+  doi: "10.5281/zenodo.24456762"
+  url: "https://doi.org/10.5281/zenodo.24456762"
+  license: "CC-BY-4.0"

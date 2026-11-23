@@ -6,6 +6,8 @@
 ![vram](https://img.shields.io/badge/VRAM-8%20GB-orange)
 ![ram](https://img.shields.io/badge/RAM-16%20GB%20single%20stick-red)
 ![cuda](https://img.shields.io/badge/CUDA-13.5-76B900)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24456762.svg)](https://doi.org/10.5281/zenodo.24456762)
+[![paper](https://img.shields.io/badge/paper-18%20pages-lightgrey)](paper/jsys-problem-paper/JSys_Problem_Paper_author_version.pdf)
 
 **在 8GB 显存 + 16GB 内存的物理双墙下，把本地大模型的交互延迟压榨到极限。算物理账，不吹牛；正确性优先于吞吐。**
 
@@ -203,6 +205,7 @@ print("\nrc =", rc)
 
 - [**《TIR-A 结项技术论文》**](paper/TIR-A_Technical_Report_Final.md)（42,043 汉字）——上限校准、20 模型矩阵，以及两次关键反转：MTP 的 `eval_ms` 语义与 plain 相反；主机开销先被算成 91%，补上漏项后更正为 20.0%。同目录有 DOCX/PDF。
 - [**《上一版工程报告》**](docs/archive/2026-11-10-engineering-report.md)（46,925 汉字）——踩坑、失败与回退、门禁设计。
+- [**《JSys problem paper（署名版，英文）**](paper/jsys-problem-paper/JSys_Problem_Paper_author_version.pdf)（18 页）——把同一套实测压成一张边界图：8 GiB 显存墙、306–330 GB/s 器件区间、50/115 W 包络，以及 prefill 归因与批宽翻转两个陷阱。已作为预印本公开发布：**DOI [10.5281/zenodo.24456762](https://doi.org/10.5281/zenodo.24456762)**（CC BY 4.0，2026-11-23，v1）。目录说明、版本差异与三种引用格式见 [paper/jsys-problem-paper/README.md](paper/jsys-problem-paper/README.md) 与 [DOI.txt](paper/jsys-problem-paper/DOI.txt)。
 
 三个问题的答案在这里：**为什么 8B 到不了 100 tok/s？** 看论文 §3.1 的物理账（5.03 GB/token ÷ 292 GB/s ≈ 17.2 ms，100 tok/s 要求 10 ms）。**为什么 27B 反而能跑？** 因为它是 1-bit 的 3.53 GiB，装得下就赢了一半。**91% 的归因错误怎么纠正的？** 看 §2.6：漏减 `prompt_eval_ms`，加上 prefill 统计越界，两处修完才是 20.0%。
 

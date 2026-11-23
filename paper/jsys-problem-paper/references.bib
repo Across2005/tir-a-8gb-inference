@@ -1,0 +1,191 @@
+% references.bib — systems surveyed in the project record, plus verified
+% academic/upstream references. Repository entries were checked against the
+% GitHub API (creation date, license, archive state; record: repos_verify.json)
+% and against download-time snapshot metadata; accessed 2026-11-17.
+
+@inproceedings{sarathi2024,
+  author    = {Agrawal, Amey and Kedia, Nitin and Panwar, Ashish and Mohan, Jayashree and Kwatra, Nipun and Gulavani, Bhargav S. and Tumanov, Alexey and Ramjee, Ramachandran},
+  title     = {Taming Throughput-Latency Tradeoff in {LLM} Inference with {Sarathi-Serve}},
+  booktitle = {18th USENIX Symposium on Operating Systems Design and Implementation (OSDI 24)},
+  year      = {2024},
+  doi       = {10.48550/arXiv.2403.02310},
+  note      = {arXiv:2403.02310; chunked prefill and stall-free batching}
+}
+
+@misc{deepseekv3,
+  author       = {{DeepSeek-AI}},
+  title        = {{DeepSeek-V3} Technical Report},
+  year         = {2024},
+  eprint       = {2412.19437},
+  archivePrefix = {arXiv},
+  doi          = {10.48550/arXiv.2412.19437},
+  note         = {Sets a multi-token prediction training objective}
+}
+
+@misc{llamacppmtp,
+  author = {Gupta, Aman and {ggml-org}},
+  title  = {llama + spec: {MTP} Support (pull request 22673)},
+  year   = {2026},
+  url    = {https://github.com/ggml-org/llama.cpp/pull/22673},
+  note   = {Merged 2026-05-16; merge commit 255582687b8dd211fdbc582e43ab842491554e94; adds --spec-type draft-mtp}
+}
+
+@misc{llamacpp,
+  author = {{ggml-org}},
+  title  = {llama.cpp},
+  year   = {2026},
+  url    = {https://github.com/ggml-org/llama.cpp},
+  note   = {Upstream repository; MIT. Comparison binary: prebuilt b12202, \texttt{llama-server --version} = 0.9.0-dev (build 12202, commit d6be06557), Clang 20.1.8; accessed 2026-11-09}
+}
+
+@misc{diskinfer,
+  author = {{Horn-Studio}},
+  title  = {diskinfer-windows},
+  year   = {2026},
+  url    = {https://github.com/Horn-Studio/diskinfer-windows},
+  note   = {Direct upstream at the forked snapshot (Apache-2.0; repository since renamed diskinfer-desktop and relicensed MIT). llama.cpp 0.7.0 / ggml 0.27.0 lineage; disk-streaming node hook (\texttt{src/llama-disk.cpp}); created 2026-11-07}
+}
+
+@misc{Strata2026,
+  author = {{Niko1221}},
+  title  = {Strata},
+  year   = {2026},
+  url    = {https://github.com/Niko1221/Strata},
+  note   = {MIT; prefix checkpoints and per-width draft policy; repository created 2026-09-24; accessed 2026-11-17}
+}
+
+@misc{swiftlet,
+  author = {{leonickson1}},
+  title  = {Swiftlet},
+  year   = {2026},
+  url    = {https://github.com/leonickson1/Swiftlet},
+  note   = {Apache-2.0; expert streaming, qpack layout, LFU slot pools; Swift/Metal; repository created 2026-08-03; accessed 2026-11-17}
+}
+
+@misc{ktransformers,
+  author = {{kvcache-ai}},
+  title  = {KTransformers},
+  year   = {2024},
+  url    = {https://github.com/kvcache-ai/ktransformers},
+  note   = {Apache-2.0; pinned odd/even double buffering; repository created 2024-07-26; accessed 2026-11-17}
+}
+
+@misc{flexllmgen,
+  author = {{FMInference}},
+  title  = {FlexLLMGen (FlexGen re-distribution)},
+  year   = {2023},
+  url    = {https://github.com/FMInference/FlexLLMGen},
+  note   = {Apache-2.0; archived; Tgen/Tpre cost model; repository created 2023-02-15; accessed 2026-11-17}
+}
+
+@misc{airllm,
+  author = {{lyogavin}},
+  title  = {AirLLM},
+  year   = {2023},
+  url    = {https://github.com/lyogavin/airllm},
+  note   = {Apache-2.0; meta-device layer hooks, verbatim packed transfer, super-block index; repository created 2023-06-12; accessed 2026-11-17}
+}
+
+@misc{powerinfer,
+  author = {{Tiiny-AI}},
+  title  = {PowerInfer},
+  year   = {2023},
+  url    = {https://github.com/Tiiny-AI/PowerInfer},
+  note   = {MIT; ReLU neuron sparsity; ExpertCache in the smallthinker subtree; repository created 2023-12-15; accessed 2026-11-17}
+}
+
+@misc{rabbitllm,
+  author = {{ManuelSLemos}},
+  title  = {RabbitLLM},
+  year   = {2026},
+  url    = {https://github.com/ManuelSLemos/RabbitLLM},
+  note   = {Apache-2.0; negative per-layer pinning measurement (about 0.7 GB/s); repository created 2026-02-16; accessed 2026-11-17}
+}
+
+@misc{airllmplus,
+  author = {{howardleegeek}},
+  title  = {airllm-plus},
+  year   = {2026},
+  url    = {https://github.com/howardleegeek/airllm-plus},
+  note   = {No license declared; rejected negative evidence (sleep-based compute, NotImplementedError cache); repository created 2026-02-22; accessed 2026-11-17}
+}
+
+@inproceedings{leviathan2023,
+  author    = {Leviathan, Yaniv and Kalman, Matan and Matias, Yossi},
+  title     = {Fast Inference from Transformers via Speculative Decoding},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2023},
+  doi       = {10.48550/arXiv.2211.17192},
+  note      = {arXiv:2211.17192}
+}
+
+@misc{chen2023spec,
+  author = {Chen, Charlie and Borgeaud, Sebastian and Irving, Geoffrey and Lespiau, Jean-Baptiste and others},
+  title  = {Accelerating Large Language Model Decoding with Speculative Sampling},
+  year   = {2023},
+  doi    = {10.48550/arXiv.2302.01318},
+  note   = {arXiv:2302.01318}
+}
+
+@inproceedings{medusa2024,
+  author    = {Cai, Tianle and Li, Yuhong and Geng, Zhengyang and Peng, Hongwu and others},
+  title     = {Medusa: Simple {LLM} Inference Acceleration Framework with Multiple Decoding Heads},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2024},
+  doi       = {10.48550/arXiv.2401.10774},
+  note      = {arXiv:2401.10774}
+}
+
+@inproceedings{flexgen2023,
+  author    = {Sheng, Ying and Zheng, Lianmin and Yuan, Binhang and Li, Zhuohan and others},
+  title     = {FlexGen: High-Throughput Generative Inference of Large Language Models with a Single {GPU}},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2023},
+  doi       = {10.48550/arXiv.2303.06865},
+  note      = {arXiv:2303.06865}
+}
+
+@inproceedings{powerinfer2024,
+  author    = {Song, Yixin and Mi, Zeyu and Xie, Haotong and Chen, Haibo},
+  title     = {PowerInfer: Fast Large Language Model Serving with a Consumer-grade {GPU}},
+  booktitle = {Proceedings of the ACM SIGOPS 30th Symposium on Operating Systems Principles (SOSP)},
+  year      = {2024},
+  doi       = {10.1145/3694715.3695964}
+}
+
+@inproceedings{llmflash2024,
+  author    = {Alizadeh, Keivan and Mirzadeh, Iman and Belenko, Dmitry and Khatamifard, Karen and others},
+  title     = {{LLM} in a Flash: Efficient Large Language Model Inference with Limited Memory},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year      = {2024},
+  doi       = {10.18653/v1/2024.acl-long.678}
+}
+
+@inproceedings{kivi2024,
+  author    = {Liu, Zirui and Yuan, Jiayi and Jin, Hongye and Zhong, Shaochen and others},
+  title     = {{KIVI}: A Tuning-Free Asymmetric 2bit Quantization for {KV} Cache},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2024},
+  doi       = {10.48550/arXiv.2402.02750},
+  note      = {arXiv:2402.02750}
+}
+
+@inproceedings{promptcache2024,
+  author    = {Gim, In and Chen, Guojun and Lee, Seung-seob and Sarda, Nikhil and others},
+  title     = {Prompt Cache: Modular Attention Reuse for Low-Latency Inference},
+  booktitle = {Conference on Machine Learning and Systems (MLSys)},
+  year      = {2024},
+  doi       = {10.48550/arXiv.2311.04934},
+  note      = {arXiv:2311.04934}
+}
+
+@article{williams2009,
+  author  = {Williams, Samuel and Waterman, Andrew and Patterson, David},
+  title   = {Roofline: An Insightful Visual Performance Model for Multicore Architectures},
+  journal = {Communications of the ACM},
+  volume  = {52},
+  number  = {4},
+  pages   = {65--76},
+  year    = {2009},
+  doi     = {10.1145/1498765.1498785}
+}
